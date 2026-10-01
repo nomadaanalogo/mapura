@@ -53,7 +53,7 @@ export const metadata: Metadata = {
       "Abogados especializados en Palmira, Valle del Cauca. Más de 13 años de experiencia en Insolvencia, Derecho Civil, Familia, Laboral y Comercial. Consulta gratuita.",
     images: [
       {
-        url: "https://grupomapura.co/images/mapura-logo-new.webp",
+        url: "https://grupomapura.co/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Mapura - Abogados en Palmira, Valle del Cauca",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mapura | Abogados en Palmira, Valle del Cauca",
     description: "Expertos en asesoría jurídica integral. Más de 13 años de experiencia en Palmira y Valle del Cauca.",
-    images: ["https://grupomapura.co/images/mapura-logo-new.webp"],
+    images: ["https://grupomapura.co/images/og-image.jpg"],
     creator: "@mapura",
     site: "@mapura",
   },

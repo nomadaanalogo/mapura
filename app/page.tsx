@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       "Firma de consultoria legal centrados en el cliente, Abogados en Ley de Insolvencia en Palmira, Valle del Cauca, con servicio a nivel nacional. Detén embargos y renegocia tus deudas.",
     images: [
       {
-        url: "https://grupomapura.co/images/mapura-logo-new.webp",
+        url: "https://grupomapura.co/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Mapura - Ley de Insolvencia Económica en Colombia",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Insolvencia Económica en Colombia | Mapura",
     description: "Detén embargos y renegocia tus deudas con la Ley de Insolvencia Económica. Atención nacional.",
-    images: ["https://grupomapura.co/images/mapura-logo-new.webp"],
+    images: ["https://grupomapura.co/images/og-image.jpg"],
   },
   alternates: {
     canonical: "https://grupomapura.co",

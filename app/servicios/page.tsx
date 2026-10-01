@@ -36,7 +36,7 @@ export const metadata: Metadata = {
       "Abogados en Palmira, Valle del Cauca, para insolvencia, derecho civil, familia, laboral y comercial. Asesoría jurídica presencial y virtual.",
     images: [
       {
-        url: "https://grupomapura.co/images/mapura-logo-new.webp",
+        url: "https://grupomapura.co/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Mapura - Servicios Jurídicos en Palmira",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Abogados en Palmira | Servicios Jurídicos | Mapura",
     description: "Insolvencia, derecho civil, familia, laboral y comercial. Asesoría presencial y virtual.",
-    images: ["https://grupomapura.co/images/mapura-logo-new.webp"],
+    images: ["https://grupomapura.co/images/og-image.jpg"],
   },
   alternates: {
     canonical: "https://grupomapura.co/servicios",

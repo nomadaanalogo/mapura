@@ -31,7 +31,7 @@ export const metadata: Metadata = {
       "Formación práctica en derecho, insolvencia y áreas relacionadas, desarrollada por profesionales que llevan el conocimiento del aula a la práctica.",
     images: [
       {
-        url: "https://grupomapura.co/images/mapura-logo-new.webp",
+        url: "https://grupomapura.co/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Centro de Conocimiento Mapura",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Centro de Conocimiento Mapura",
     description: "Aprende. Actualízate. Certifícate. Formación práctica en derecho e insolvencia.",
-    images: ["https://grupomapura.co/images/mapura-logo-new.webp"],
+    images: ["https://grupomapura.co/images/og-image.jpg"],
   },
   alternates: {
     canonical: "https://grupomapura.co/academia",
