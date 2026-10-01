@@ -128,9 +128,11 @@ export default function ContactSectionInsolvency() {
   }
 
   const scrollToFormTop = () => {
-    const contactSection = document.querySelector("#contact-form")
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth", block: "start" })
+    const card = document.querySelector("#contact-form-card")
+    if (card) {
+      const headerOffset = 90 // deja ver el botón "Atrás" debajo del navbar fijo
+      const top = card.getBoundingClientRect().top + window.scrollY - headerOffset
+      window.scrollTo({ top, behavior: "smooth" })
     }
   }
 
@@ -267,7 +269,7 @@ export default function ContactSectionInsolvency() {
   ]
 
   return (
-    <section className="bg-gradient-to-br from-[#2C3E50] to-[#4EA5A7] py-16 lg:py-24">
+    <section id="contact-form" className="bg-gradient-to-br from-[#2C3E50] to-[#4EA5A7] py-16 lg:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -281,7 +283,7 @@ export default function ContactSectionInsolvency() {
 
         <div className="max-w-2xl mx-auto">
           <div
-            id="contact-form"
+            id="contact-form-card"
             className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl border border-white/20"
           >
             {step > 1 && (

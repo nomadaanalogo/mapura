@@ -76,7 +76,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="bg-gradient-to-br from-[#2C3E50] to-[#4EA5A7] py-16 lg:py-24">
+    <section id="contact-form" className="bg-gradient-to-br from-[#2C3E50] to-[#4EA5A7] py-16 lg:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">Contáctanos ahora</h2>
@@ -87,7 +87,6 @@ export default function ContactSection() {
 
         <div className="max-w-2xl mx-auto">
           <div
-            id="contact-form"
             className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 lg:p-12 shadow-2xl border border-white/20"
           >
             <form onSubmit={handleSubmit} className="space-y-6">

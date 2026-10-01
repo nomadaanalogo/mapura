@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/image"
-import { FaYoutube } from "react-icons/fa"
 
 const YOUTUBE_URL = "https://youtube.com/@ccmgrupoconsultor?si=n10-x9GuDYLEEVj4"
 
@@ -132,7 +131,7 @@ export default function InsolvencyHeroSection() {
               onClick={() => {
                 const contactSection = document.querySelector("#contact-form")
                 if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: "smooth", block: "center" })
+                  contactSection.scrollIntoView({ behavior: "smooth", block: "start" })
                 }
               }}
               className="w-fit bg-green-500 hover:bg-green-600 text-white px-8 py-2.5 lg:py-4 text-base lg:text-lg font-bold rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-400 flex items-center justify-center self-center lg:self-start text-center"
@@ -152,10 +151,9 @@ export default function InsolvencyHeroSection() {
               href={YOUTUBE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-white/80 lg:text-[#2C3E50]/70 hover:text-white lg:hover:text-[#2C3E50] text-sm font-semibold transition-colors"
+              className="text-white/80 lg:text-[#2C3E50]/70 hover:text-white lg:hover:text-[#2C3E50] text-sm font-semibold underline underline-offset-2 transition-colors"
             >
-              <FaYoutube className="text-lg text-red-500" />
-              Descubre cómo podemos ayudarte
+              Conócenos en nuestro canal de YouTube
             </a>
           </div>
         </div>

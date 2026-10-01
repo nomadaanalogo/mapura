@@ -102,7 +102,7 @@ export default function Header() {
               onClick={() => {
                 const contactSection = document.querySelector("#contact-form")
                 if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: "smooth", block: "center" })
+                  contactSection.scrollIntoView({ behavior: "smooth", block: "start" })
                 }
               }}
               className="bg-green-500 text-white px-4 lg:px-6 py-2 text-sm lg:text-base rounded-lg font-semibold hover:bg-green-600 transition-colors duration-300"
