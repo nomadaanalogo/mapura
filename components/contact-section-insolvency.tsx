@@ -127,6 +127,13 @@ export default function ContactSectionInsolvency() {
     return ""
   }
 
+  const scrollToFormTop = () => {
+    const contactSection = document.querySelector("#contact-form")
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }
+
   const goNext = () => {
     const error = validateStep(step)
     if (error) {
@@ -135,11 +142,13 @@ export default function ContactSectionInsolvency() {
     }
     setStepError("")
     setStep((s) => Math.min(TOTAL_STEPS, s + 1))
+    scrollToFormTop()
   }
 
   const goBack = () => {
     setStepError("")
     setStep((s) => Math.max(1, s - 1))
+    scrollToFormTop()
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -526,14 +535,22 @@ export default function ContactSectionInsolvency() {
 
               {step === 4 && (
                 <div className="space-y-6">
-                  <Textarea
-                    name="descripcion"
-                    value={formData.descripcion}
-                    onChange={handleInputChange}
-                    placeholder="Cuéntanos sobre tu situación de deuda (embargos, descuentos por nómina, reportes en centrales, etc.) *"
-                    rows={5}
-                    className={`${inputClass} resize-none`}
-                  />
+                  <div>
+                    <label className="text-white/90 text-sm font-semibold mb-2 block">
+                      Cuéntanos sobre tu situación de deuda *
+                    </label>
+                    <p className="text-white/60 text-xs mb-3">
+                      Por ejemplo: embargos, descuentos por nómina, reportes en centrales, etc.
+                    </p>
+                    <Textarea
+                      name="descripcion"
+                      value={formData.descripcion}
+                      onChange={handleInputChange}
+                      placeholder="Escribe aquí..."
+                      rows={5}
+                      className={`${inputClass} resize-none`}
+                    />
+                  </div>
                 </div>
               )}
 
