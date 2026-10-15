@@ -129,7 +129,7 @@ export default function InsolvencyHeroSection() {
           {/* Mobile photo: shown in normal flow below the content, hidden on desktop (desktop has the full-bleed photo) */}
           {/* Rises behind the CTA so the YouTube link sits at head height. The photo is nudged right/down inside
               the frame, and the elliptical mask (anchored bottom-right) makes the whole top and left edges fade out in a curve. */}
-          <div className="lg:hidden relative self-end -mr-4 -mt-[calc(40vw+2rem)] w-screen max-w-[520px] aspect-[1/1]">
+          <div className="lg:hidden relative self-end -mr-4 -mt-[calc(40vw+2px)] w-screen max-w-[520px] aspect-[1/1]">
             <div
               className="absolute inset-0 overflow-hidden"
               style={{
