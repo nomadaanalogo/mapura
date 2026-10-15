@@ -16,7 +16,7 @@ export default function Footer() {
               alt="Mapura Grupo Consultor"
               width={200}
               height={70}
-              className="h-12 w-auto object-contain mb-4"
+              className="h-16 lg:h-20 w-auto object-contain mb-4"
               style={{ filter: "brightness(0) invert(1)" }}
             />
             <p className="text-white/70 text-sm leading-relaxed">
