@@ -51,7 +51,7 @@ type FormData = typeof initialFormData
 export default function ContactSectionInsolvency() {
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState<FormData>(initialFormData)
-  const [acceptPolicy, setAcceptPolicy] = useState(true)
+  const [acceptPolicy, setAcceptPolicy] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [statusMessage, setStatusMessage] = useState("")
   const [stepError, setStepError] = useState("")

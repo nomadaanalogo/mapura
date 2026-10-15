@@ -1,9 +1,19 @@
 export default function EmotionalCtaBanner() {
   return (
-    <section className="bg-gradient-to-r from-[#2C3E50] to-[#4EA5A7] py-10 lg:py-12">
-      <div className="container mx-auto px-4 text-center">
+    <section className="relative overflow-hidden bg-gradient-to-r from-[#2C3E50] to-[#4EA5A7] py-10 lg:py-12">
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `url('/images/fondo-textura-mapura.webp')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="container mx-auto px-4 text-center relative z-10">
         <p className="text-xl lg:text-2xl font-bold text-white mb-5 max-w-2xl mx-auto leading-snug">
-          Tranquilidad financiera no es un sueño, es una decisión que puedes tomar hoy.
+          Cada deuda tiene una salida legal.
+          <br />
+          Nosotros te ayudamos a encontrarla.
         </p>
         <a
           href="#contact-form"

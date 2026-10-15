@@ -5,10 +5,10 @@ export default function InsolvencyIntroSection() {
   return (
     <section className="bg-blue-50 py-14 lg:py-20">
       <div className="container mx-auto px-4 lg:px-16">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-5 items-stretch">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[280px_1fr] gap-5 items-center lg:items-stretch">
           {/* Video */}
-          <div className="flex flex-col gap-3">
-            <div className="relative rounded-3xl overflow-hidden shadow-lg border border-blue-100 aspect-[9/16] lg:h-full lg:aspect-auto">
+          <div className="flex flex-col gap-3 mx-auto w-full max-w-[220px] lg:max-w-none">
+            <div className="relative rounded-3xl overflow-hidden shadow-lg border border-blue-100 aspect-[9/16] lg:max-h-[420px]">
               <InlineVideoPlayer
                 src="/videos/video-web.mp4"
                 poster="/images/video-web-poster.webp"
@@ -22,28 +22,32 @@ export default function InsolvencyIntroSection() {
           </div>
 
           {/* Las dos tarjetas, apiladas */}
-          <div className="flex flex-col gap-5">
-            <div className="bg-white rounded-3xl shadow-lg border border-blue-100 p-6 lg:p-8 text-left flex flex-col items-start flex-1">
-              <div className="bg-[#4EA5A7]/10 p-4 rounded-full mb-4">
-                <FaBalanceScale className="text-[#4EA5A7] text-2xl" />
+          <div className="flex flex-col gap-4">
+            <div className="bg-white rounded-3xl shadow-lg border border-blue-100 p-5 lg:p-6 text-left flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="bg-[#4EA5A7]/10 p-2.5 rounded-full flex-shrink-0">
+                  <FaBalanceScale className="text-[#4EA5A7] text-lg" />
+                </div>
+                <h2 className="text-base lg:text-lg font-black text-[#2C3E50] leading-snug">
+                  La Ley de Insolvencia es la herramienta legal para superar la crisis financiera
+                </h2>
               </div>
-              <h2 className="text-lg lg:text-xl font-black text-[#2C3E50] leading-snug mb-3">
-                La Ley de Insolvencia es la herramienta legal para superar la crisis financiera
-              </h2>
-              <p className="text-sm lg:text-base text-[#2C3E50]/70 leading-relaxed">
+              <p className="text-sm text-[#2C3E50]/70 leading-relaxed">
                 Te acompañamos para <strong className="text-[#2C3E50] font-semibold">negociar con tus acreedores</strong>{" "}
                 y construir una <strong className="text-[#2C3E50] font-semibold">solución de pago acorde a tu capacidad económica</strong>.
               </p>
             </div>
 
-            <div className="bg-white rounded-3xl shadow-lg border border-blue-100 p-6 lg:p-8 text-left flex flex-col items-start flex-1">
-              <div className="bg-[#4EA5A7]/10 p-4 rounded-full mb-4">
-                <FaComments className="text-[#4EA5A7] text-2xl" />
+            <div className="bg-white rounded-3xl shadow-lg border border-blue-100 p-5 lg:p-6 text-left flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="bg-[#4EA5A7]/10 p-2.5 rounded-full flex-shrink-0">
+                  <FaComments className="text-[#4EA5A7] text-lg" />
+                </div>
+                <h2 className="text-base lg:text-lg font-black text-[#2C3E50] leading-snug">
+                  Una firma de consultoría legal centrada en el cliente
+                </h2>
               </div>
-              <h2 className="text-lg lg:text-xl font-black text-[#2C3E50] leading-snug mb-3">
-                Una firma de consultoría legal centrada en el cliente
-              </h2>
-              <p className="text-sm lg:text-base text-[#2C3E50]/70 leading-relaxed">
+              <p className="text-sm text-[#2C3E50]/70 leading-relaxed">
                 En MAPURA Grupo Consultor, <strong className="text-[#2C3E50] font-semibold">entendemos cada caso desde la realidad y las necesidades de nuestros clientes</strong>,
                 no desde soluciones genéricas. <strong className="text-[#2C3E50] font-semibold">Escuchamos, orientamos y diseñamos estrategias legales</strong>{" "}
                 que te permitan recuperar tu tranquilidad financiera.

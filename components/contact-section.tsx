@@ -14,7 +14,7 @@ export default function ContactSection() {
     email: "",
     descripcion: "",
   })
-  const [acceptPolicy, setAcceptPolicy] = useState(true)
+  const [acceptPolicy, setAcceptPolicy] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [statusMessage, setStatusMessage] = useState("")
 

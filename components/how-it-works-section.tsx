@@ -24,7 +24,7 @@ export default function HowItWorksSection() {
     <section className="bg-white py-16 lg:py-24">
       <div className="container mx-auto px-4 lg:px-16">
         <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl lg:text-5xl font-black text-[#2C3E50]">Un proceso claro, en 3 pasos</h2>
+          <h2 className="text-3xl lg:text-5xl font-black text-[#2C3E50]">Un proceso claro en 3 pasos</h2>
         </div>
 
         <div className="grid sm:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
