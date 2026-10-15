@@ -3,42 +3,15 @@
 import { FaPhone, FaInstagram, FaBars, FaTimes } from "react-icons/fa"
 import Image from "next/image"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 export default function Header() {
-  const [scrolledPastHero, setScrolledPastHero] = useState(false)
-  const [hoveringTop, setHoveringTop] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const isVisible = scrolledPastHero || hoveringTop
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroSection = document.querySelector("section")
-      if (heroSection) {
-        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight
-        setScrolledPastHero(window.scrollY > heroBottom - 100)
-      }
-    }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      setHoveringTop(e.clientY <= 60)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-      window.removeEventListener("mousemove", handleMouseMove)
-    }
-  }, [])
 
   return (
-    <header
-      className={`bg-white py-1 fixed top-0 left-0 right-0 z-50 shadow-md transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
-      <div className="container mx-auto px-4">
+    <>
+      <header className="bg-white py-1 fixed top-0 left-0 right-0 z-50 shadow-md">
+        <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             {/* Mobile hamburger menu */}
@@ -140,7 +113,10 @@ export default function Header() {
             </a>
           </nav>
         )}
-      </div>
-    </header>
+        </div>
+      </header>
+      {/* Spacer so fixed-position header doesn't cover page content */}
+      <div className="h-[60px] lg:h-[64px]" />
+    </>
   )
 }
