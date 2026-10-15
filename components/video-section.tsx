@@ -37,7 +37,7 @@ export default function VideoSection() {
         </a>
 
         <p className="text-center text-sm lg:text-base text-[#2C3E50]/70 max-w-2xl mx-auto mt-6">
-          Liderado por la Abg. <strong className="text-[#2C3E50]">Claudia Zapata Mapura</strong>, experta en Ley de
+          Liderado por la Abogada <strong className="text-[#2C3E50]">Claudia Zapata Mapura</strong>, experta en Ley de
           Insolvencia con participación activa en los principales congresos jurídicos del país.
         </p>
       </div>

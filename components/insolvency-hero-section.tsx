@@ -104,8 +104,8 @@ export default function InsolvencyHeroSection() {
             </p>
 
             <h1 className="text-3xl lg:text-5xl xl:text-6xl font-black leading-tight text-balance">
-              <span className="text-white lg:text-[#2C3E50]">Te ayudamos a recuperar el </span>
-              <span className="text-[#7fd4d6] lg:text-[#4EA5A7]">control de tus finanzas</span>
+              <span className="text-white lg:text-[#2C3E50]">Te ayudamos a recuperar </span>
+              <span className="text-[#7fd4d6] lg:text-[#4EA5A7]">el control de tus finanzas</span>
             </h1>
           </div>
 
@@ -126,36 +126,34 @@ export default function InsolvencyHeroSection() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center lg:items-start gap-3 w-full lg:w-fit">
-            <button
-              onClick={() => {
-                const contactSection = document.querySelector("#contact-form")
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: "smooth", block: "start" })
-                }
-              }}
-              className="w-fit bg-green-500 hover:bg-green-600 text-white px-8 py-2.5 lg:py-4 text-base lg:text-lg font-bold rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-400 flex items-center justify-center self-center lg:self-start text-center"
-              style={{
-                boxShadow: "0 0 30px rgba(34, 197, 94, 0.3), 0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <span className="lg:hidden">
-                Descubre si calificas
-                <br />
-                para la Ley de Insolvencia
-              </span>
-              <span className="hidden lg:inline">Descubre si calificas para la Ley de Insolvencia</span>
-            </button>
+          <button
+            onClick={() => {
+              const contactSection = document.querySelector("#contact-form")
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth", block: "start" })
+              }
+            }}
+            className="w-full lg:w-fit bg-green-500 hover:bg-green-600 text-white px-8 py-2.5 lg:py-4 text-base lg:text-lg font-bold rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-400 flex items-center justify-center self-center lg:self-start text-center"
+            style={{
+              boxShadow: "0 0 30px rgba(34, 197, 94, 0.3), 0 10px 25px -5px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <span className="lg:hidden leading-tight">
+              Descubre si calificas
+              <br />
+              para la Ley de Insolvencia
+            </span>
+            <span className="hidden lg:inline">Descubre si calificas para la Ley de Insolvencia</span>
+          </button>
 
-            <a
-              href={YOUTUBE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/80 lg:text-[#2C3E50]/70 hover:text-white lg:hover:text-[#2C3E50] text-sm font-semibold underline underline-offset-2 transition-colors"
-            >
-              Conócenos en nuestro canal de YouTube
-            </a>
-          </div>
+          <a
+            href={YOUTUBE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="self-center lg:self-start text-white/80 lg:text-[#2C3E50]/70 hover:text-white lg:hover:text-[#2C3E50] text-sm font-semibold underline underline-offset-2 transition-colors"
+          >
+            Conócenos en nuestro canal de YouTube
+          </a>
         </div>
       </div>
     </section>

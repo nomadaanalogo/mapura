@@ -1,4 +1,21 @@
-const YOUTUBE_URL = "https://youtube.com/@ccmgrupoconsultor?si=n10-x9GuDYLEEVj4"
+const BIENVENIDA_URL = "https://grupomapura.co/bienvenida"
+
+const SHEET_INSOLVENCIA = "Insolvencia"
+const SHEET_SERVICIOS = "Otros Servicios"
+
+const HEADERS_INSOLVENCIA = [
+  "Fecha",
+  "Nombre",
+  "Teléfono",
+  "Email",
+  "Tipo(s) de deuda",
+  "2+ deudas con mora > 90 días",
+  "Valor total de las deudas",
+  "Procesos de cobro iniciados",
+  "Tipos de proceso de cobro",
+]
+
+const HEADERS_SERVICIOS = ["Fecha", "Nombre", "Teléfono", "Email", "Servicio de interés", "Mensaje"]
 
 function doPost(e) {
   try {
@@ -6,22 +23,23 @@ function doPost(e) {
     // automáticamente en e.parameter (NO es JSON, por eso no usamos JSON.parse).
     const data = e.parameter
 
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet()
-
-    sheet.appendRow([
-      new Date(), // Fecha y hora
-      data.tipo || "",
-      data.nombre || "",
-      data.telefono || "",
-      data.email || "",
-      data.servicio || "", // Solo formulario General
-      data.tiposDeuda || "",
-      data.mora2Deudas90 || "",
-      data.valorTotalDeudas || "",
-      data.procesosCobro || "",
-      data.tiposProcesoCobro || "",
-      data.mensaje || "", // Solo formulario General
-    ])
+    if (esInsolvencia(data)) {
+      const sheet = getOrCreateSheet(SHEET_INSOLVENCIA, HEADERS_INSOLVENCIA)
+      sheet.appendRow([
+        new Date(),
+        data.nombre || "",
+        data.telefono || "",
+        data.email || "",
+        data.tiposDeuda || "",
+        data.mora2Deudas90 || "",
+        data.valorTotalDeudas || "",
+        data.procesosCobro || "",
+        data.tiposProcesoCobro || "",
+      ])
+    } else {
+      const sheet = getOrCreateSheet(SHEET_SERVICIOS, HEADERS_SERVICIOS)
+      sheet.appendRow([new Date(), data.nombre || "", data.telefono || "", data.email || "", data.servicio || "", data.mensaje || ""])
+    }
 
     enviarEmailCliente(data)
     enviarNotificacionMapura(data)
@@ -40,6 +58,20 @@ function doPost(e) {
       }),
     ).setMimeType(ContentService.MimeType.JSON)
   }
+}
+
+function getOrCreateSheet(name, headers) {
+  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet()
+  let sheet = spreadsheet.getSheetByName(name)
+
+  if (!sheet) {
+    sheet = spreadsheet.insertSheet(name)
+    sheet.appendRow(headers)
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold")
+    sheet.setFrozenRows(1)
+  }
+
+  return sheet
 }
 
 function esInsolvencia(data) {
@@ -70,15 +102,12 @@ function enviarEmailCliente(data) {
       <p><strong>Mensaje:</strong> ${data.mensaje || "N/A"}</p>
     `
 
-  // Video de bienvenida: por ahora enlaza al canal de YouTube de Mapura.
-  // Reemplazar YOUTUBE_URL arriba por el link del video de contacto
-  // "titulado email" cuando el equipo lo entregue.
   const videoHtml = esInsolvencia(data)
     ? `
       <div style="text-align: center; margin: 24px 0;">
-        <a href="${YOUTUBE_URL}" style="text-decoration: none;">
+        <a href="${BIENVENIDA_URL}" style="text-decoration: none;">
           <img
-            src="https://grupomapura.co/images/dr-mapura-office.webp"
+            src="https://grupomapura.co/images/video-email-poster.webp"
             alt="Video de bienvenida de Mapura"
             style="max-width: 100%; border-radius: 10px; display: block; margin: 0 auto;"
           />
@@ -176,9 +205,9 @@ function enviarNotificacionMapura(data) {
   })
 }
 
-// Función de prueba (opcional)
+// Función de prueba (opcional) — crea una fila de ejemplo en cada hoja.
 function testEmail() {
-  const dataPrueba = {
+  const dataInsolvencia = {
     tipo: "Insolvencia",
     nombre: "Juan Pérez",
     telefono: "3001234567",
@@ -189,6 +218,17 @@ function testEmail() {
     procesosCobro: "No",
   }
 
-  enviarEmailCliente(dataPrueba)
-  enviarNotificacionMapura(dataPrueba)
+  const dataServicios = {
+    tipo: "General",
+    nombre: "María Gómez",
+    telefono: "3009876543",
+    email: "maria@example.com",
+    servicio: "Derecho de Familia",
+    mensaje: "Necesito asesoría sobre un proceso de divorcio.",
+  }
+
+  enviarEmailCliente(dataInsolvencia)
+  enviarNotificacionMapura(dataInsolvencia)
+  enviarEmailCliente(dataServicios)
+  enviarNotificacionMapura(dataServicios)
 }

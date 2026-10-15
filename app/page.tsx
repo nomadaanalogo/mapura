@@ -1,6 +1,7 @@
 import Header from "@/components/header"
 import InsolvencyHeroSection from "@/components/insolvency-hero-section"
 import InsolvencyIntroSection from "@/components/insolvency-intro-section"
+import EmotionalCtaBanner from "@/components/emotional-cta-banner"
 import HowItWorksSection from "@/components/how-it-works-section"
 import InsolvencyBrandSection from "@/components/insolvency-brand-section"
 import VideoSection from "@/components/video-section"
@@ -148,6 +149,7 @@ export default function Home() {
       <Header />
       <InsolvencyHeroSection />
       <InsolvencyIntroSection />
+      <EmotionalCtaBanner />
       <HowItWorksSection />
       <InsolvencyBrandSection />
       <VideoSection />

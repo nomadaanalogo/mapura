@@ -31,7 +31,7 @@ export default function ContactSection() {
 
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbxdI5v9z1aaGFrEDd3B6jPSEgQuEYcVbE5HOs5ij_z6it74-lmf8s_rlbfm_1XIyYiA/exec",
+        "https://script.google.com/macros/s/AKfycbyfX7ZG6CstCxY_eICazl8r9-zIy8QJyYet2IfUxjWva7fjfP_bpfX0Nsq5hd2rCgOa/exec",
         {
           method: "POST",
           headers: {

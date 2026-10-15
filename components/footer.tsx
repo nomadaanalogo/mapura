@@ -83,8 +83,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 text-center text-white/50 text-xs">
-          © {new Date().getFullYear()} Mapura Grupo Consultor. Todos los derechos reservados.
+        <div className="border-t border-white/10 mt-10 pt-6 text-center text-white/50 text-xs space-y-1">
+          <p>© {new Date().getFullYear()} Mapura Grupo Consultor. Todos los derechos reservados.</p>
+          <p>
+            Desarrollado por{" "}
+            <a
+              href="https://nmdenlaweb.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-white underline transition-colors"
+            >
+              nmdenlaweb
+            </a>
+          </p>
         </div>
       </div>
     </footer>

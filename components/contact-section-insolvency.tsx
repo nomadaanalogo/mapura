@@ -2,10 +2,10 @@
 
 import type React from "react"
 import { useState } from "react"
-import Image from "next/image"
 import { Input } from "@/components/ui/input"
-import { FaPhone, FaWhatsapp, FaInstagram, FaCheck, FaArrowLeft, FaPlay } from "react-icons/fa"
+import { FaPhone, FaWhatsapp, FaInstagram, FaCheck, FaArrowLeft } from "react-icons/fa"
 import Link from "next/link"
+import InlineVideoPlayer from "@/components/inline-video-player"
 
 const TOTAL_STEPS = 2
 
@@ -34,8 +34,6 @@ const PROCESO_COBRO_OPCIONES = [
   "No tiene medidas cautelares",
   "Desconocido",
 ]
-
-const YOUTUBE_URL = "https://youtube.com/@ccmgrupoconsultor?si=n10-x9GuDYLEEVj4"
 
 const initialFormData = {
   nombre: "",
@@ -127,7 +125,7 @@ export default function ContactSectionInsolvency() {
 
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbxdI5v9z1aaGFrEDd3B6jPSEgQuEYcVbE5HOs5ij_z6it74-lmf8s_rlbfm_1XIyYiA/exec",
+        "https://script.google.com/macros/s/AKfycbyfX7ZG6CstCxY_eICazl8r9-zIy8QJyYet2IfUxjWva7fjfP_bpfX0Nsq5hd2rCgOa/exec",
         {
           method: "POST",
           headers: {
@@ -224,25 +222,13 @@ export default function ContactSectionInsolvency() {
                 Mapura:
               </p>
 
-              <a
-                href={YOUTUBE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block max-w-md mx-auto relative rounded-2xl overflow-hidden shadow-xl aspect-video"
-              >
-                <Image
-                  src="/images/dr-mapura-office.webp"
-                  alt="Video de bienvenida de Mapura Grupo Consultor"
-                  fill
-                  sizes="(max-width: 1024px) 90vw, 448px"
-                  className="object-cover"
+              <div className="max-w-xs mx-auto relative rounded-2xl overflow-hidden shadow-xl aspect-[9/16]">
+                <InlineVideoPlayer
+                  src="/videos/video-email.mp4"
+                  poster="/images/video-email-poster.webp"
+                  alt="Video de bienvenida de la Dra. Claudia Mapura"
                 />
-                <div className="absolute inset-0 bg-[#2C3E50]/50 group-hover:bg-[#2C3E50]/60 transition-colors flex items-center justify-center">
-                  <div className="bg-white/90 group-hover:bg-white p-4 rounded-full shadow-lg transform group-hover:scale-110 transition-all duration-300 border-2 border-green-500">
-                    <FaPlay className="text-xl text-[#2C3E50] ml-1" />
-                  </div>
-                </div>
-              </a>
+              </div>
 
               <button
                 type="button"
