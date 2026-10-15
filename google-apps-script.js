@@ -166,7 +166,7 @@ function enviarEmailCliente(data) {
             <span style="color: #3B8F99;">sobre nuestro equipo y cómo te acompañamos</span>
           </h1>
           <p style="margin: 0 0 24px 0; font-size: 18px; line-height: 1.6; color: #4A5A6A;">
-            La Dra. Claudia Mapura te da la bienvenida y te cuenta cómo trabajamos para ayudarte a recuperar tu
+            La Dra. Claudia Zapata Mapura te da la bienvenida y te cuenta cómo trabajamos para ayudarte a recuperar tu
             tranquilidad financiera.
           </p>
         </td>
@@ -190,7 +190,7 @@ function enviarEmailCliente(data) {
               </tr>
               <tr>
                 <td align="center" style="padding: 0 24px 36px 24px; font-size: 16px; font-weight: bold; color: #ffffff; letter-spacing: 0.5px;">
-                  Un mensaje de la Dra. Claudia Mapura para ti
+                  Un mensaje de la Dra. Claudia Zapata Mapura para ti
                 </td>
               </tr>
               <tr>
@@ -198,7 +198,7 @@ function enviarEmailCliente(data) {
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="background-color: #ffffff; border-radius: 12px;">
                     <tr>
                       <td style="padding: 12px 18px; text-align: left;">
-                        <p style="margin: 0; font-size: 15px; font-weight: bold; color: #1B2A3A;">Dra. Claudia Mapura</p>
+                        <p style="margin: 0; font-size: 15px; font-weight: bold; color: #1B2A3A;">Dra. Claudia Zapata Mapura</p>
                         <p style="margin: 2px 0 0 0; font-size: 13px; color: #3B8F99;">Experta en Ley de Insolvencia</p>
                       </td>
                     </tr>

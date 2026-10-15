@@ -216,7 +216,7 @@ export default function ContactSectionInsolvency() {
             <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl border border-white/20 text-center space-y-6">
               <h3 className="text-2xl lg:text-3xl font-bold text-white">¡Gracias por confiarnos tu caso!</h3>
               <p className="text-white/90">
-                Ya recibimos tu información. Mientras un experto se comunica contigo, conocé a la Dra. Claudia
+                Ya recibimos tu información. Mientras un experto se comunica contigo, conocé a la Dra. Claudia Zapata
                 Mapura:
               </p>
 
@@ -224,7 +224,7 @@ export default function ContactSectionInsolvency() {
                 <InlineVideoPlayer
                   src="/videos/video-email.mp4"
                   poster="/images/video-email-poster.webp"
-                  alt="Video de bienvenida de la Dra. Claudia Mapura"
+                  alt="Video de bienvenida de la Dra. Claudia Zapata Mapura"
                 />
               </div>
 

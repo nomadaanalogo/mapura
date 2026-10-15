@@ -12,7 +12,7 @@ export default function InsolvencyIntroSection() {
               <InlineVideoPlayer
                 src="/videos/video-web.mp4"
                 poster="/images/video-web-poster.webp"
-                alt="Conoce a la Dra. Claudia Mapura y el equipo de Mapura Grupo Consultor"
+                alt="Conoce a la Dra. Claudia Zapata Mapura y el equipo de Mapura Grupo Consultor"
               />
             </div>
             <div className="flex items-center justify-center gap-2 text-[#2C3E50]/70 text-sm font-semibold">

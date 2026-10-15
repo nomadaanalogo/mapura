@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "tutelas Palmira",
     "abogados laborales Cali",
     "mapura grupo consultor",
-    "Dra Claudia Mapura",
+    "Dra Claudia Zapata Mapura",
   ],
   authors: [{ name: "Mapura Grupo Consultor" }],
   creator: "Mapura Grupo Consultor",
@@ -176,7 +176,7 @@ export default function RootLayout({
               ],
               founder: {
                 "@type": "Person",
-                name: "Dra. Claudia Mapura",
+                name: "Dra. Claudia Zapata Mapura",
                 jobTitle: "Directora",
               },
               sameAs: [

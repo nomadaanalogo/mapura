@@ -5,7 +5,7 @@ import InlineVideoPlayer from "@/components/inline-video-player"
 
 export const metadata: Metadata = {
   title: "Video de bienvenida | Mapura Grupo Consultor",
-  description: "Mensaje de bienvenida de la Dra. Claudia Mapura, fundadora de Mapura Grupo Consultor.",
+  description: "Mensaje de bienvenida de la Dra. Claudia Zapata Mapura, fundadora de Mapura Grupo Consultor.",
   robots: {
     index: false,
     follow: false,
@@ -22,14 +22,14 @@ export default function BienvenidaPage() {
           Un mensaje de bienvenida para ti
         </h1>
         <p className="text-[#2C3E50]/70 mb-8">
-          La Dra. Claudia Mapura, fundadora de Mapura Grupo Consultor, te da la bienvenida.
+          La Dra. Claudia Zapata Mapura, fundadora de Mapura Grupo Consultor, te da la bienvenida.
         </p>
 
         <div className="max-w-xs mx-auto relative rounded-2xl overflow-hidden shadow-xl aspect-[9/16]">
           <InlineVideoPlayer
             src="/videos/video-email.mp4"
             poster="/images/video-email-poster.webp"
-            alt="Video de bienvenida de la Dra. Claudia Mapura"
+            alt="Video de bienvenida de la Dra. Claudia Zapata Mapura"
           />
         </div>
 

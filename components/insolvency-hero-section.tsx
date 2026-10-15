@@ -57,7 +57,7 @@ export default function InsolvencyHeroSection() {
           </div>
 
           <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg">
-            <p className="text-sm lg:text-base font-bold text-[#2C3E50] whitespace-nowrap">Dra. Claudia Mapura</p>
+            <p className="text-sm lg:text-base font-bold text-[#2C3E50] whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
             <p className="text-xs lg:text-sm text-[#4EA5A7] font-semibold whitespace-nowrap">
               Referente nacional en Ley de Insolvencia
             </p>
@@ -149,7 +149,7 @@ export default function InsolvencyHeroSection() {
               </div>
             </div>
             <div className="absolute bottom-3 right-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg">
-              <p className="text-sm font-bold text-[#2C3E50] whitespace-nowrap">Dra. Claudia Mapura</p>
+              <p className="text-sm font-bold text-[#2C3E50] whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
               <p className="text-xs text-[#4EA5A7] font-semibold whitespace-nowrap">
                 Referente nacional en Ley de Insolvencia
               </p>

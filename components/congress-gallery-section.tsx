@@ -20,7 +20,7 @@ export default function CongressGallerySection() {
   const congressImages = [
     {
       id: 1,
-      alt: "Dra. Claudia Mapura en panel sobre estrategias de insolvencia",
+      alt: "Dra. Claudia Zapata Mapura en panel sobre estrategias de insolvencia",
       url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/congreso1-5z5OJt4ln0mKnVIq2xPCD1V5p88hiI.jpg",
     },
     {
@@ -152,7 +152,7 @@ export default function CongressGallerySection() {
             Referentes en el sector jurídico
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            La Dra. Claudia Mapura participa activamente en los principales congresos y eventos de insolvencia y
+            La Dra. Claudia Zapata Mapura participa activamente en los principales congresos y eventos de insolvencia y
             derecho concursal en Colombia. Su presencia activa en estos espacios respalda, con hechos, la experiencia
             que ofrecemos en cada caso.
           </p>

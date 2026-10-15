@@ -83,7 +83,7 @@ export default function ServiciosPage() {
     ],
     founder: {
       "@type": "Person",
-      name: "Dra. Claudia Mapura",
+      name: "Dra. Claudia Zapata Mapura",
     },
   }
 

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "negociación de deudas",
     "eliminar deudas Colombia",
     "abogados de insolvencia Colombia",
-    "Dra Claudia Mapura",
+    "Dra Claudia Zapata Mapura",
     "Mapura grupo consultor",
   ],
   openGraph: {
@@ -92,7 +92,7 @@ export default function Home() {
     ],
     founder: {
       "@type": "Person",
-      name: "Dra. Claudia Mapura",
+      name: "Dra. Claudia Zapata Mapura",
     },
     offers: {
       "@type": "Offer",
