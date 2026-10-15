@@ -69,7 +69,7 @@ export default function ServicesHeroSection() {
             alt="Mapura Grupo Consultor"
             width={280}
             height={100}
-            className="h-20 w-auto object-contain"
+            className="h-24 w-auto object-contain"
           />
         </div>
 
@@ -79,7 +79,7 @@ export default function ServicesHeroSection() {
             alt="Mapura Grupo Consultor"
             width={280}
             height={100}
-            className="hidden lg:block h-28 w-auto object-contain self-start"
+            className="hidden lg:block h-36 w-auto object-contain self-start"
           />
 
           <div className="space-y-6">
