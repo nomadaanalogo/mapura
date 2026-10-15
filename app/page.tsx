@@ -10,6 +10,7 @@ import LocationSection from "@/components/location-section"
 import InsolvencyFaqSection from "@/components/insolvency-faq-section"
 import FinalCtaInsolvencySection from "@/components/final-cta-insolvency-section"
 import ContactSectionInsolvency from "@/components/contact-section-insolvency"
+import SocialGrowthSection from "@/components/social-growth-section"
 import Footer from "@/components/footer"
 import type { Metadata } from "next"
 
@@ -117,7 +118,7 @@ export default function Home() {
         name: "¿Cuánto tiempo toma el proceso?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Depende del caso. Nuestros procesos de insolvencia de persona natural han tomado en promedio 3 meses.",
+          text: "Conforme a la Ley, en la etapa de negociación se establece un tiempo de hasta 6 meses para lograr un acuerdo de pago; en caso de terminar en una liquidación patrimonial, el término es variable y depende del tiempo de los despachos judiciales.",
         },
       },
       {
@@ -156,6 +157,7 @@ export default function Home() {
       <InsolvencyFaqSection />
       <FinalCtaInsolvencySection />
       <ContactSectionInsolvency />
+      <SocialGrowthSection />
       <Footer />
     </main>
   )

@@ -1,4 +1,4 @@
-import { FaHandshake, FaUsers, FaBriefcase, FaBuilding, FaGavel, FaChevronDown } from "react-icons/fa"
+import { FaHandshake, FaUsers, FaBriefcase, FaBuilding, FaGavel, FaChevronDown, FaFileDownload } from "react-icons/fa"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 
@@ -138,6 +138,42 @@ export default function ServicesSection() {
                 </AccordionItem>
               )
             })}
+
+            <AccordionItem
+              value="portafolio"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden border-none"
+            >
+              <AccordionTrigger className="px-4 lg:px-8 py-3 lg:py-4 hover:no-underline hover:bg-gray-50 data-[state=open]:bg-[#B8D8D8] transition-colors group [&[data-state=open]>div>div:last-child]:bg-[#2C3E50] [&[data-state=open]>div>div:last-child>svg]:rotate-180 [&>svg]:hidden">
+                <div className="flex items-center justify-between w-full">
+                  <div className="flex items-center space-x-3 lg:space-x-4">
+                    <div className="bg-[#2C3E50] p-2 lg:p-2.5 rounded-xl flex-shrink-0">
+                      <FaFileDownload className="text-lg lg:text-2xl text-white" />
+                    </div>
+                    <h3 className="text-sm lg:text-xl font-bold text-[#2C3E50] text-left">
+                      Conoce el portafolio de servicios de Mapura Grupo Consultor
+                    </h3>
+                  </div>
+                  <div className="bg-[#4EA5A7] p-2 lg:p-2.5 rounded-full ml-2 flex-shrink-0 transition-all duration-300">
+                    <FaChevronDown className="text-white text-sm lg:text-lg transition-transform duration-300" />
+                  </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 lg:px-8 pb-4">
+                <p className="text-[#2C3E50]/80 text-xs lg:text-base leading-relaxed mb-4">
+                  Descarga en este enlace el portafolio de servicios de MAPURA Grupo Consultor.
+                </p>
+                <div className="flex justify-center pt-2">
+                  <Button
+                    asChild
+                    className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 lg:px-8 py-2.5 lg:py-3 rounded-full text-sm lg:text-base transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    <a href="/documents/portafolio-mapura-grupo-consultor.pdf" download target="_blank" rel="noopener noreferrer">
+                      Descargar portafolio
+                    </a>
+                  </Button>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
           </Accordion>
         </div>
       </div>

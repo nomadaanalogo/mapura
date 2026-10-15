@@ -2,34 +2,28 @@
 
 import type React from "react"
 import { useState } from "react"
+import Image from "next/image"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { FaPhone, FaWhatsapp, FaInstagram, FaInfoCircle, FaCheck, FaArrowLeft } from "react-icons/fa"
+import { FaPhone, FaWhatsapp, FaInstagram, FaCheck, FaArrowLeft, FaPlay } from "react-icons/fa"
 import Link from "next/link"
 
-const TOTAL_STEPS = 5
+const TOTAL_STEPS = 2
 
 const TIPOS_DEUDA = [
-  "Préstamos bancarios",
+  "Bancarios",
+  "Libre Inversión",
+  "Libranza",
+  "Vehicular",
+  "Educativo (ICETEX)",
   "Tarjeta de crédito",
-  "Crédito de libre inversión",
-  "Crédito de consumo",
-  "Crédito de libranza",
-  "Crédito de Leasing",
-  "Crédito vehicular",
-  "Crédito hipotecario",
-  "Crédito educativo (Icetex)",
-  "Créditos con Cooperativas",
-  "Otros créditos",
-]
-
-const BIENES_OPCIONES = ["Vivienda", "Vehículo", "Local comercial", "Establecimiento de comercio", "Lote", "Otro", "Ninguno"]
-
-const AFECTACIONES_OPCIONES = [
-  "Embargo y secuestro de bienes",
-  "Aprehensión de vehículo",
-  "No tiene medidas cautelares",
-  "Desconocido",
+  "Consumo",
+  "Leasing",
+  "Hipotecario",
+  "Cooperativas",
+  "Laborales",
+  "Alimentos",
+  "Fiscales (Impuestos DIAN, Gobernación, Alcaldía)",
+  "Seguridad Social (EPS, ARL, AFP, PARAFISCALES)",
 ]
 
 const PROCESO_COBRO_OPCIONES = [
@@ -41,22 +35,17 @@ const PROCESO_COBRO_OPCIONES = [
   "Desconocido",
 ]
 
+const YOUTUBE_URL = "https://youtube.com/@ccmgrupoconsultor?si=n10-x9GuDYLEEVj4"
+
 const initialFormData = {
   nombre: "",
   telefono: "",
   email: "",
   tiposDeuda: [] as string[],
-  tipoDeudaOtro: "",
-  montoDeuda: "",
-  ingresoMensual: "",
-  moraSuperior90: "",
-  bienes: [] as string[],
-  bienesOtro: "",
-  valorActivos: "",
-  afectacionesInmuebles: "",
+  mora2Deudas90: "",
+  valorTotalDeudas: "",
   procesosCobro: "",
   tiposProcesoCobro: [] as string[],
-  descripcion: "",
 }
 
 type FormData = typeof initialFormData
@@ -68,60 +57,28 @@ export default function ContactSectionInsolvency() {
   const [isLoading, setIsLoading] = useState(false)
   const [statusMessage, setStatusMessage] = useState("")
   const [stepError, setStepError] = useState("")
+  const [submitted, setSubmitted] = useState(false)
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const toggleCheckbox = (field: "tiposDeuda" | "bienes" | "tiposProcesoCobro", value: string) => {
+  const toggleCheckbox = (field: "tiposDeuda" | "tiposProcesoCobro", value: string) => {
     setFormData((prev) => {
       const current = prev[field]
-
-      if (field === "bienes") {
-        if (value === "Ninguno") {
-          return { ...prev, bienes: current.includes("Ninguno") ? [] : ["Ninguno"] }
-        }
-        const withoutNinguno = current.filter((v) => v !== "Ninguno")
-        const next = withoutNinguno.includes(value)
-          ? withoutNinguno.filter((v) => v !== value)
-          : [...withoutNinguno, value]
-        return { ...prev, bienes: next }
-      }
-
       const next = current.includes(value) ? current.filter((v) => v !== value) : [...current, value]
       return { ...prev, [field]: next }
     })
   }
 
-  // Orden: 1) deuda, 2) bienes, 3) procesos legales, 4) descripción, 5) datos de contacto + política
+  // Orden: 1) situación de deuda, 2) datos de contacto + política
   const validateStep = (currentStep: number) => {
     if (currentStep === 1) {
-      if (formData.tiposDeuda.length === 0 || !formData.montoDeuda || !formData.ingresoMensual || !formData.moraSuperior90) {
-        return "Completa todos los campos de esta sección para continuar."
-      }
-      if (formData.tiposDeuda.includes("Otros créditos") && !formData.tipoDeudaOtro) {
-        return "Cuéntanos qué tipo de obligación es."
-      }
-    }
-    if (currentStep === 2) {
-      if (formData.bienes.length === 0) {
-        return "Selecciona al menos una opción, o marca 'Ninguno'."
-      }
-      if (formData.bienes.includes("Otro") && !formData.bienesOtro) {
-        return "Especifica qué otro bien posees."
-      }
-    }
-    if (currentStep === 3) {
-      if (!formData.afectacionesInmuebles || !formData.procesosCobro) {
+      if (formData.tiposDeuda.length === 0 || !formData.mora2Deudas90 || !formData.valorTotalDeudas || !formData.procesosCobro) {
         return "Completa todos los campos de esta sección para continuar."
       }
       if (formData.procesosCobro === "Sí" && formData.tiposProcesoCobro.length === 0) {
         return "Selecciona qué tipo de proceso te han iniciado."
-      }
-    }
-    if (currentStep === 4) {
-      if (!formData.descripcion) {
-        return "Cuéntanos brevemente tu situación para continuar."
       }
     }
     return ""
@@ -182,22 +139,13 @@ export default function ContactSectionInsolvency() {
             email: formData.email,
             telefono: formData.telefono,
             tiposDeuda: formData.tiposDeuda.join(", "),
-            tipoDeudaOtro: formData.tipoDeudaOtro,
-            montoDeuda: formData.montoDeuda,
-            ingresoMensual: formData.ingresoMensual,
-            moraSuperior90: formData.moraSuperior90,
-            bienes: formData.bienes.join(", "),
-            bienesOtro: formData.bienesOtro,
-            valorActivos: formData.valorActivos,
-            afectacionesInmuebles: formData.afectacionesInmuebles,
+            mora2Deudas90: formData.mora2Deudas90,
+            valorTotalDeudas: formData.valorTotalDeudas,
             procesosCobro: formData.procesosCobro,
             tiposProcesoCobro: formData.tiposProcesoCobro.join(", "),
-            mensaje: formData.descripcion,
           }),
         },
       )
-
-      setStatusMessage("Datos enviados correctamente. Redirigiendo a WhatsApp...")
 
       const resumen = [
         `*Nueva consulta de Insolvencia Económica*`,
@@ -205,23 +153,18 @@ export default function ContactSectionInsolvency() {
         `*Nombre:* ${formData.nombre}`,
         `*Teléfono:* ${formData.telefono}`,
         `*Email:* ${formData.email}`,
-        `*Tipo(s) de deuda:* ${formData.tiposDeuda.join(", ")}${formData.tipoDeudaOtro ? ` (${formData.tipoDeudaOtro})` : ""}`,
-        `*Monto de la deuda:* ${formData.montoDeuda}`,
-        `*Ingreso mensual:* ${formData.ingresoMensual}`,
-        `*Mora superior a 90 días:* ${formData.moraSuperior90}`,
-        `*Bienes:* ${formData.bienes.join(", ")}${formData.bienesOtro ? ` (${formData.bienesOtro})` : ""}`,
-        `*Valor aproximado de activos en Colombia:* ${formData.valorActivos || "No especifica"}`,
-        `*Afectaciones sobre inmuebles:* ${formData.afectacionesInmuebles}`,
+        `*Tipo(s) de deuda:* ${formData.tiposDeuda.join(", ")}`,
+        `*Dos o más deudas con mora superior a 90 días:* ${formData.mora2Deudas90}`,
+        `*Valor total de las deudas:* ${formData.valorTotalDeudas}`,
         `*Procesos de cobro iniciados:* ${formData.procesosCobro}${
           formData.tiposProcesoCobro.length ? ` (${formData.tiposProcesoCobro.join(", ")})` : ""
         }`,
-        `*Descripción:*`,
-        formData.descripcion,
       ].join("\n")
 
       const whatsappURL = `https://wa.me/573106537502?text=${encodeURIComponent(resumen)}`
       window.open(whatsappURL, "_blank")
 
+      setSubmitted(true)
       setFormData(initialFormData)
       setStep(1)
     } catch (error) {
@@ -239,7 +182,7 @@ export default function ContactSectionInsolvency() {
     name,
     value,
   }: {
-    name: "moraSuperior90" | "procesosCobro"
+    name: "mora2Deudas90" | "procesosCobro"
     value: string
   }) => (
     <div className="flex gap-3">
@@ -260,258 +203,103 @@ export default function ContactSectionInsolvency() {
     </div>
   )
 
-  const stepTitles = [
-    "Tu situación de deuda",
-    "Tus bienes y activos",
-    "Procesos legales en curso",
-    "Cuéntanos tu caso",
-    "Tus datos de contacto",
-  ]
+  const stepTitles = ["Tu situación de deuda", "Tus datos de contacto"]
 
   return (
     <section id="contact-form" className="bg-gradient-to-br from-[#2C3E50] to-[#4EA5A7] py-16 lg:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Inicia tu proceso de Insolvencia
+            Da el primer paso y recupera tu tranquilidad
           </h2>
-          <p className="text-lg md:text-xl text-white/90">
-            Responde unas pocas preguntas y evaluemos si puedes acogerte a la Ley de Insolvencia. Un experto se
-            comunicará contigo en las próximas 24 horas.
-          </p>
+          <p className="text-lg md:text-xl text-white/90">Responde las siguientes preguntas y permítenos evaluar tu caso.</p>
         </div>
 
         <div className="max-w-2xl mx-auto">
-          <div
-            id="contact-form-card"
-            className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl border border-white/20"
-          >
-            {step > 1 && (
+          {submitted ? (
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl border border-white/20 text-center space-y-6">
+              <h3 className="text-2xl lg:text-3xl font-bold text-white">¡Gracias por confiarnos tu caso!</h3>
+              <p className="text-white/90">
+                Ya recibimos tu información. Mientras un experto se comunica contigo, conocé a la Dra. Claudia
+                Mapura:
+              </p>
+
+              <a
+                href={YOUTUBE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block max-w-md mx-auto relative rounded-2xl overflow-hidden shadow-xl aspect-video"
+              >
+                <Image
+                  src="/images/dr-mapura-office.webp"
+                  alt="Video de bienvenida de Mapura Grupo Consultor"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 448px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-[#2C3E50]/50 group-hover:bg-[#2C3E50]/60 transition-colors flex items-center justify-center">
+                  <div className="bg-white/90 group-hover:bg-white p-4 rounded-full shadow-lg transform group-hover:scale-110 transition-all duration-300 border-2 border-green-500">
+                    <FaPlay className="text-xl text-[#2C3E50] ml-1" />
+                  </div>
+                </div>
+              </a>
+
               <button
                 type="button"
-                onClick={goBack}
-                className="flex items-center gap-2 text-white/80 hover:text-white font-semibold text-sm mb-6 -mt-1"
+                onClick={() => setSubmitted(false)}
+                className="text-white/70 hover:text-white text-sm underline"
               >
-                <FaArrowLeft className="text-xs" />
-                Atrás
+                Volver al formulario
               </button>
-            )}
-
-            {/* Progress */}
-            <div className="mb-8">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-white/80 text-sm font-semibold">
-                  Paso {step} de {TOTAL_STEPS}
-                </span>
-                <span className="text-white/80 text-sm font-semibold">{stepTitles[step - 1]}</span>
-              </div>
-              <div className="h-2 bg-white/20 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-green-500 rounded-full transition-all duration-300"
-                  style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
-                />
-              </div>
             </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {step === 1 && (
-                <div className="space-y-6">
-                  <div>
-                    <label className="text-white/90 text-sm font-semibold mb-1 block">
-                      ¿Qué tipo(s) de deuda tienes? *
-                    </label>
-                    <p className="text-white/60 text-xs mb-3">Puedes seleccionar varias opciones.</p>
-                    <div className="grid grid-cols-2 gap-2">
-                      {TIPOS_DEUDA.map((tipo) => {
-                        const checked = formData.tiposDeuda.includes(tipo)
-                        return (
-                          <button
-                            type="button"
-                            key={tipo}
-                            onClick={() => toggleCheckbox("tiposDeuda", tipo)}
-                            className={`flex items-center gap-2 px-3 py-2.5 rounded-lg border-2 text-xs sm:text-sm font-semibold text-left transition-colors ${
-                              checked
-                                ? "bg-white text-[#2C3E50] border-white"
-                                : "bg-white/15 text-white border-white/40 hover:bg-white/25"
-                            }`}
-                          >
-                            <span
-                              className={`w-4 h-4 rounded flex items-center justify-center flex-shrink-0 border ${
-                                checked ? "bg-green-500 border-green-500" : "border-white/60"
-                              }`}
-                            >
-                              {checked && <FaCheck className="text-white text-[10px]" />}
-                            </span>
-                            {tipo}
-                          </button>
-                        )
-                      })}
-                    </div>
-
-                    {formData.tiposDeuda.includes("Otros créditos") && (
-                      <div className="mt-3 space-y-2">
-                        <div className="flex items-start gap-2 bg-white/10 p-3 rounded-lg text-white/80 text-xs">
-                          <FaInfoCircle className="mt-0.5 flex-shrink-0" />
-                          <span>
-                            Por ejemplo, créditos de tipo fiscal: impuestos, DIAN, gobernaciones, alcaldías, etc.
-                          </span>
-                        </div>
-                        <Input
-                          name="tipoDeudaOtro"
-                          value={formData.tipoDeudaOtro}
-                          onChange={handleInputChange}
-                          placeholder="Especifica el tipo de obligación *"
-                          className={inputClass}
-                        />
-                      </div>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="text-white/90 text-sm font-semibold mb-2 block">
-                      ¿Cuánto debe actualmente? *
-                    </label>
-                    <Input
-                      name="montoDeuda"
-                      value={formData.montoDeuda}
-                      onChange={handleInputChange}
-                      placeholder="Ej: $50.000.000"
-                      className={inputClass}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-white/90 text-sm font-semibold mb-2 block">
-                      ¿Cuál es su ingreso mensual actual? *
-                    </label>
-                    <Input
-                      name="ingresoMensual"
-                      value={formData.ingresoMensual}
-                      onChange={handleInputChange}
-                      placeholder="Ej: $3.000.000"
-                      className={inputClass}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-white/90 text-sm font-semibold mb-2 block">
-                      ¿Tiene mora superior a 90 días? *
-                    </label>
-                    <YesNoToggle name="moraSuperior90" value={formData.moraSuperior90} />
-                  </div>
-                </div>
+          ) : (
+            <div
+              id="contact-form-card"
+              className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 sm:p-8 lg:p-12 shadow-2xl border border-white/20"
+            >
+              {step > 1 && (
+                <button
+                  type="button"
+                  onClick={goBack}
+                  className="flex items-center gap-2 text-white/80 hover:text-white font-semibold text-sm mb-6 -mt-1"
+                >
+                  <FaArrowLeft className="text-xs" />
+                  Atrás
+                </button>
               )}
 
-              {step === 2 && (
-                <div className="space-y-6">
-                  <div>
-                    <label className="text-white/90 text-sm font-semibold mb-3 block">
-                      ¿Posee bienes a su nombre en Colombia y/o en el exterior? *
-                    </label>
-                    <div className="grid grid-cols-2 gap-2">
-                      {BIENES_OPCIONES.map((opcion) => {
-                        const checked = formData.bienes.includes(opcion)
-                        return (
-                          <button
-                            type="button"
-                            key={opcion}
-                            onClick={() => toggleCheckbox("bienes", opcion)}
-                            className={`flex items-center gap-2 px-3 py-2.5 rounded-lg border-2 text-sm font-semibold text-left transition-colors ${
-                              checked
-                                ? "bg-white text-[#2C3E50] border-white"
-                                : "bg-white/15 text-white border-white/40 hover:bg-white/25"
-                            }`}
-                          >
-                            <span
-                              className={`w-4 h-4 rounded flex items-center justify-center flex-shrink-0 border ${
-                                checked ? "bg-green-500 border-green-500" : "border-white/60"
-                              }`}
-                            >
-                              {checked && <FaCheck className="text-white text-[10px]" />}
-                            </span>
-                            {opcion}
-                          </button>
-                        )
-                      })}
-                    </div>
-
-                    {formData.bienes.includes("Otro") && (
-                      <Input
-                        name="bienesOtro"
-                        value={formData.bienesOtro}
-                        onChange={handleInputChange}
-                        placeholder="Especifica qué otro bien posees *"
-                        className={`${inputClass} mt-3`}
-                      />
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="text-white/90 text-sm font-semibold mb-2 block">
-                      ¿Cuál es el valor aproximado de sus activos en Colombia?{" "}
-                      <span className="text-white/60 font-normal">(opcional)</span>
-                    </label>
-                    <Input
-                      name="valorActivos"
-                      value={formData.valorActivos}
-                      onChange={handleInputChange}
-                      placeholder="Ej: $200.000.000"
-                      className={inputClass}
-                    />
-                  </div>
+              {/* Progress */}
+              <div className="mb-8">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-white/80 text-sm font-semibold">
+                    Paso {step} de {TOTAL_STEPS}
+                  </span>
+                  <span className="text-white/80 text-sm font-semibold">{stepTitles[step - 1]}</span>
                 </div>
-              )}
+                <div className="h-2 bg-white/20 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-green-500 rounded-full transition-all duration-300"
+                    style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
+                  />
+                </div>
+              </div>
 
-              {step === 3 && (
-                <div className="space-y-6">
-                  <div>
-                    <label className="text-white/90 text-sm font-semibold mb-3 block">
-                      ¿Tiene bienes inmuebles en Colombia con las siguientes afectaciones? *
-                    </label>
-                    <div className="space-y-2">
-                      {AFECTACIONES_OPCIONES.map((opcion) => {
-                        const checked = formData.afectacionesInmuebles === opcion
-                        return (
-                          <button
-                            type="button"
-                            key={opcion}
-                            onClick={() => setFormData((prev) => ({ ...prev, afectacionesInmuebles: opcion }))}
-                            className={`w-full flex items-center gap-2 px-3 py-2.5 rounded-lg border-2 text-sm font-semibold text-left transition-colors ${
-                              checked
-                                ? "bg-white text-[#2C3E50] border-white"
-                                : "bg-white/15 text-white border-white/40 hover:bg-white/25"
-                            }`}
-                          >
-                            <span
-                              className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 border ${
-                                checked ? "bg-green-500 border-green-500" : "border-white/60"
-                              }`}
-                            >
-                              {checked && <FaCheck className="text-white text-[9px]" />}
-                            </span>
-                            {opcion}
-                          </button>
-                        )
-                      })}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-white/90 text-sm font-semibold mb-2 block">
-                      ¿Le han iniciado procesos de cobro (Ejecutivo, Coactivo) en virtud de las deudas que presenta
-                      actualmente? *
-                    </label>
-                    <YesNoToggle name="procesosCobro" value={formData.procesosCobro} />
-
-                    {formData.procesosCobro === "Sí" && (
-                      <div className="grid grid-cols-2 gap-2 mt-3">
-                        {PROCESO_COBRO_OPCIONES.map((opcion) => {
-                          const checked = formData.tiposProcesoCobro.includes(opcion)
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {step === 1 && (
+                  <div className="space-y-6">
+                    <div>
+                      <label className="text-white/90 text-sm font-semibold mb-1 block">
+                        ¿Qué tipo(s) de deuda tienes? *
+                      </label>
+                      <p className="text-white/60 text-xs mb-3">Puedes seleccionar varias opciones.</p>
+                      <div className="grid grid-cols-2 gap-2">
+                        {TIPOS_DEUDA.map((tipo) => {
+                          const checked = formData.tiposDeuda.includes(tipo)
                           return (
                             <button
                               type="button"
-                              key={opcion}
-                              onClick={() => toggleCheckbox("tiposProcesoCobro", opcion)}
+                              key={tipo}
+                              onClick={() => toggleCheckbox("tiposDeuda", tipo)}
                               className={`flex items-center gap-2 px-3 py-2.5 rounded-lg border-2 text-xs sm:text-sm font-semibold text-left transition-colors ${
                                 checked
                                   ? "bg-white text-[#2C3E50] border-white"
@@ -525,120 +313,156 @@ export default function ContactSectionInsolvency() {
                               >
                                 {checked && <FaCheck className="text-white text-[10px]" />}
                               </span>
-                              {opcion}
+                              {tipo}
                             </button>
                           )
                         })}
                       </div>
-                    )}
+                    </div>
+
+                    <div>
+                      <label className="text-white/90 text-sm font-semibold mb-2 block">
+                        ¿Tiene dos o más deudas con mora superior a 90 días? *
+                      </label>
+                      <YesNoToggle name="mora2Deudas90" value={formData.mora2Deudas90} />
+                    </div>
+
+                    <div>
+                      <label className="text-white/90 text-sm font-semibold mb-2 block">
+                        ¿A cuánto asciende el valor total de sus deudas? *
+                      </label>
+                      <Input
+                        name="valorTotalDeudas"
+                        value={formData.valorTotalDeudas}
+                        onChange={handleInputChange}
+                        placeholder="Ej: $50.000.000"
+                        className={inputClass}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-white/90 text-sm font-semibold mb-2 block">
+                        ¿Le han iniciado procesos de cobro (Ejecutivo, Coactivo) en virtud de las deudas que presenta
+                        actualmente? *
+                      </label>
+                      <YesNoToggle name="procesosCobro" value={formData.procesosCobro} />
+
+                      {formData.procesosCobro === "Sí" && (
+                        <div className="grid grid-cols-2 gap-2 mt-3">
+                          {PROCESO_COBRO_OPCIONES.map((opcion) => {
+                            const checked = formData.tiposProcesoCobro.includes(opcion)
+                            return (
+                              <button
+                                type="button"
+                                key={opcion}
+                                onClick={() => toggleCheckbox("tiposProcesoCobro", opcion)}
+                                className={`flex items-center gap-2 px-3 py-2.5 rounded-lg border-2 text-xs sm:text-sm font-semibold text-left transition-colors ${
+                                  checked
+                                    ? "bg-white text-[#2C3E50] border-white"
+                                    : "bg-white/15 text-white border-white/40 hover:bg-white/25"
+                                }`}
+                              >
+                                <span
+                                  className={`w-4 h-4 rounded flex items-center justify-center flex-shrink-0 border ${
+                                    checked ? "bg-green-500 border-green-500" : "border-white/60"
+                                  }`}
+                                >
+                                  {checked && <FaCheck className="text-white text-[10px]" />}
+                                </span>
+                                {opcion}
+                              </button>
+                            )
+                          })}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              )}
-
-              {step === 4 && (
-                <div className="space-y-6">
-                  <div>
-                    <label className="text-white/90 text-sm font-semibold mb-2 block">
-                      Cuéntanos sobre tu situación de deuda *
-                    </label>
-                    <p className="text-white/60 text-xs mb-3">
-                      Por ejemplo: embargos, descuentos por nómina, reportes en centrales, etc.
-                    </p>
-                    <Textarea
-                      name="descripcion"
-                      value={formData.descripcion}
-                      onChange={handleInputChange}
-                      placeholder="Escribe aquí..."
-                      rows={5}
-                      className={`${inputClass} resize-none`}
-                    />
-                  </div>
-                </div>
-              )}
-
-              {step === 5 && (
-                <div className="space-y-6">
-                  <Input
-                    name="nombre"
-                    value={formData.nombre}
-                    onChange={handleInputChange}
-                    placeholder="Nombre completo *"
-                    className={inputClass}
-                  />
-                  <Input
-                    name="telefono"
-                    value={formData.telefono}
-                    onChange={handleInputChange}
-                    placeholder="Teléfono *"
-                    className={inputClass}
-                  />
-                  <Input
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="Correo electrónico *"
-                    type="email"
-                    className={inputClass}
-                  />
-
-                  <div className="flex items-start space-x-3 bg-white/10 p-4 rounded-lg">
-                    <input
-                      type="checkbox"
-                      id="acceptPolicy"
-                      checked={acceptPolicy}
-                      onChange={(e) => setAcceptPolicy(e.target.checked)}
-                      className="mt-1 w-5 h-5 rounded border-white/30 text-[#4EA5A7] focus:ring-[#4EA5A7] focus:ring-offset-0 cursor-pointer"
-                    />
-                    <label htmlFor="acceptPolicy" className="text-white text-sm leading-relaxed cursor-pointer">
-                      Acepto la{" "}
-                      <Link
-                        href="/politica-privacidad"
-                        target="_blank"
-                        className="text-green-300 hover:text-green-200 underline font-semibold"
-                      >
-                        Política de Protección de Datos Personales
-                      </Link>{" "}
-                      y autorizo el tratamiento de mis datos para los fines descritos. *
-                    </label>
-                  </div>
-                </div>
-              )}
-
-              {stepError && (
-                <div className="bg-red-500/20 border border-red-400/40 p-3 rounded-lg text-white text-sm text-center">
-                  {stepError}
-                </div>
-              )}
-
-              {statusMessage && (
-                <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg text-white text-center text-sm">
-                  {statusMessage}
-                </div>
-              )}
-
-              <p className="text-white/70 text-xs text-center">* Campos obligatorios</p>
-
-              <div className="flex justify-center">
-                {step < TOTAL_STEPS ? (
-                  <button
-                    type="button"
-                    onClick={goNext}
-                    className="w-full sm:w-64 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3.5 font-bold rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-400"
-                  >
-                    Siguiente
-                  </button>
-                ) : (
-                  <button
-                    type="submit"
-                    disabled={!acceptPolicy || isLoading}
-                    className="w-full sm:w-64 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3.5 font-bold rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-400 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isLoading ? "Enviando..." : "Evaluar mi caso por WhatsApp"}
-                  </button>
                 )}
-              </div>
-            </form>
-          </div>
+
+                {step === 2 && (
+                  <div className="space-y-6">
+                    <Input
+                      name="nombre"
+                      value={formData.nombre}
+                      onChange={handleInputChange}
+                      placeholder="Nombre completo *"
+                      className={inputClass}
+                    />
+                    <Input
+                      name="telefono"
+                      value={formData.telefono}
+                      onChange={handleInputChange}
+                      placeholder="Teléfono *"
+                      className={inputClass}
+                    />
+                    <Input
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Correo electrónico *"
+                      type="email"
+                      className={inputClass}
+                    />
+
+                    <div className="flex items-start space-x-3 bg-white/10 p-4 rounded-lg">
+                      <input
+                        type="checkbox"
+                        id="acceptPolicy"
+                        checked={acceptPolicy}
+                        onChange={(e) => setAcceptPolicy(e.target.checked)}
+                        className="mt-1 w-5 h-5 rounded border-white/30 text-[#4EA5A7] focus:ring-[#4EA5A7] focus:ring-offset-0 cursor-pointer"
+                      />
+                      <label htmlFor="acceptPolicy" className="text-white text-sm leading-relaxed cursor-pointer">
+                        Acepto la{" "}
+                        <Link
+                          href="/politica-privacidad"
+                          target="_blank"
+                          className="text-green-300 hover:text-green-200 underline font-semibold"
+                        >
+                          Política de Protección de Datos Personales
+                        </Link>{" "}
+                        y autorizo el tratamiento de mis datos para los fines descritos. *
+                      </label>
+                    </div>
+                  </div>
+                )}
+
+                {stepError && (
+                  <div className="bg-red-500/20 border border-red-400/40 p-3 rounded-lg text-white text-sm text-center">
+                    {stepError}
+                  </div>
+                )}
+
+                {statusMessage && (
+                  <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg text-white text-center text-sm">
+                    {statusMessage}
+                  </div>
+                )}
+
+                <p className="text-white/70 text-xs text-center">* Campos obligatorios</p>
+
+                <div className="flex justify-center">
+                  {step < TOTAL_STEPS ? (
+                    <button
+                      type="button"
+                      onClick={goNext}
+                      className="w-full sm:w-64 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3.5 font-bold rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-400"
+                    >
+                      Siguiente
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      disabled={!acceptPolicy || isLoading}
+                      className="w-full sm:w-64 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3.5 font-bold rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-400 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isLoading ? "Enviando..." : "Evaluar mi caso por WhatsApp"}
+                    </button>
+                  )}
+                </div>
+              </form>
+            </div>
+          )}
         </div>
 
         <div className="mt-16 text-center">

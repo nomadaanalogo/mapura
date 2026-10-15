@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "¿Cuánto tiempo toma el proceso?",
     answer:
-      "Depende del caso. Nuestros procesos de insolvencia de persona natural han tomado en promedio 3 meses.",
+      "Conforme a la Ley, en la etapa de negociación se establece un tiempo de hasta 6 meses para lograr un acuerdo de pago; en caso de terminar en una liquidación patrimonial, el término es variable y depende del tiempo de los despachos judiciales.",
   },
   {
     question: "¿Aplica si soy independiente o no tengo empresa?",

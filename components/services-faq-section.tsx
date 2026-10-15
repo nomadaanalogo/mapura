@@ -7,16 +7,17 @@ const faqs = [
   },
   {
     question: "¿Puedo consultar cualquier problema jurídico?",
-    answer: "Puedes contarnos brevemente tu situación y determinaremos qué área jurídica puede ayudarte.",
+    answer:
+      "En Mapura Grupo Consultor contamos con un amplio portafolio de servicios jurídicos. Evalúa tu caso con nosotros y recibe la orientación adecuada para encontrar la mejor alternativa para tu situación.",
   },
   {
     question: "¿Atienden personas y empresas?",
     answer: "Sí. Acompañamos tanto a personas naturales como a comerciantes y empresas.",
   },
   {
-    question: "¿La primera consulta es sobre mi caso específico?",
+    question: "¿Qué incluye la primera consulta?",
     answer:
-      "Sí. La consulta permite conocer tu situación, identificar el problema jurídico y orientarte sobre las alternativas disponibles.",
+      "La primera consulta te permitirá exponer tu situación, conocer las posibles alternativas jurídicas y recibir una orientación clara y personalizada sobre las opciones más adecuadas para tu caso.",
   },
   {
     question: "¿Puedo consultar por WhatsApp?",

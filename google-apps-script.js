@@ -1,3 +1,5 @@
+const YOUTUBE_URL = "https://youtube.com/@ccmgrupoconsultor?si=n10-x9GuDYLEEVj4"
+
 function doPost(e) {
   try {
     // Los formularios envían x-www-form-urlencoded: Apps Script lo parsea
@@ -14,17 +16,11 @@ function doPost(e) {
       data.email || "",
       data.servicio || "", // Solo formulario General
       data.tiposDeuda || "",
-      data.tipoDeudaOtro || "",
-      data.montoDeuda || "",
-      data.ingresoMensual || "",
-      data.moraSuperior90 || "",
-      data.bienes || "",
-      data.bienesOtro || "",
-      data.valorActivos || "",
-      data.afectacionesInmuebles || "",
+      data.mora2Deudas90 || "",
+      data.valorTotalDeudas || "",
       data.procesosCobro || "",
       data.tiposProcesoCobro || "",
-      data.mensaje || "",
+      data.mensaje || "", // Solo formulario General
     ])
 
     enviarEmailCliente(data)
@@ -51,23 +47,16 @@ function esInsolvencia(data) {
 }
 
 function resumenInsolvenciaHtml(data) {
-  const tipoDeuda = data.tipoDeudaOtro ? `${data.tiposDeuda} (${data.tipoDeudaOtro})` : data.tiposDeuda
-  const bienes = data.bienesOtro ? `${data.bienes} (${data.bienesOtro})` : data.bienes
   const procesosCobro =
     data.procesosCobro === "Sí" && data.tiposProcesoCobro
       ? `${data.procesosCobro} - ${data.tiposProcesoCobro}`
       : data.procesosCobro
 
   return `
-    <p><strong>Tipo de deuda:</strong> ${tipoDeuda || "N/A"}</p>
-    <p><strong>Monto de la deuda:</strong> ${data.montoDeuda || "N/A"}</p>
-    <p><strong>Ingreso mensual:</strong> ${data.ingresoMensual || "N/A"}</p>
-    <p><strong>Mora superior a 90 días:</strong> ${data.moraSuperior90 || "N/A"}</p>
-    <p><strong>Bienes:</strong> ${bienes || "N/A"}</p>
-    <p><strong>Valor aproximado de activos en Colombia:</strong> ${data.valorActivos || "No especifica"}</p>
-    <p><strong>Afectaciones sobre inmuebles:</strong> ${data.afectacionesInmuebles || "N/A"}</p>
+    <p><strong>Tipo(s) de deuda:</strong> ${data.tiposDeuda || "N/A"}</p>
+    <p><strong>Dos o más deudas con mora superior a 90 días:</strong> ${data.mora2Deudas90 || "N/A"}</p>
+    <p><strong>Valor total de las deudas:</strong> ${data.valorTotalDeudas || "N/A"}</p>
     <p><strong>Procesos de cobro iniciados:</strong> ${procesosCobro || "N/A"}</p>
-    <p><strong>Descripción del caso:</strong> ${data.mensaje || "N/A"}</p>
   `
 }
 
@@ -80,6 +69,24 @@ function enviarEmailCliente(data) {
       <p><strong>Servicio de interés:</strong> ${data.servicio || "N/A"}</p>
       <p><strong>Mensaje:</strong> ${data.mensaje || "N/A"}</p>
     `
+
+  // Video de bienvenida: por ahora enlaza al canal de YouTube de Mapura.
+  // Reemplazar YOUTUBE_URL arriba por el link del video de contacto
+  // "titulado email" cuando el equipo lo entregue.
+  const videoHtml = esInsolvencia(data)
+    ? `
+      <div style="text-align: center; margin: 24px 0;">
+        <a href="${YOUTUBE_URL}" style="text-decoration: none;">
+          <img
+            src="https://grupomapura.co/images/dr-mapura-office.webp"
+            alt="Video de bienvenida de Mapura"
+            style="max-width: 100%; border-radius: 10px; display: block; margin: 0 auto;"
+          />
+          <p style="color: #4EA5A7; font-weight: bold; margin-top: 10px;">▶ Mira el video de bienvenida de la Dra. Claudia Mapura</p>
+        </a>
+      </div>
+    `
+    : ""
 
   const mensaje = `
     <html>
@@ -96,6 +103,8 @@ function enviarEmailCliente(data) {
             <p><strong>Teléfono:</strong> ${data.telefono}</p>
             ${resumen}
           </div>
+
+          ${videoHtml}
 
           <p>Mientras tanto, si tienes alguna pregunta urgente, puedes contactarnos:</p>
           <ul>
@@ -174,15 +183,10 @@ function testEmail() {
     nombre: "Juan Pérez",
     telefono: "3001234567",
     email: "juan@example.com",
-    tiposDeuda: "Tarjeta de crédito",
-    montoDeuda: "$50,000,000",
-    ingresoMensual: "$3,000,000",
-    moraSuperior90: "Sí",
-    bienes: "Vivienda, Vehículo",
-    valorActivos: "$200,000,000",
-    afectacionesInmuebles: "No tiene medidas cautelares",
+    tiposDeuda: "Tarjeta de crédito, Hipotecario",
+    mora2Deudas90: "Sí",
+    valorTotalDeudas: "$50,000,000",
     procesosCobro: "No",
-    mensaje: "Tengo varias deudas atrasadas y me están llamando a cobrar.",
   }
 
   enviarEmailCliente(dataPrueba)
