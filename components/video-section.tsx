@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { FaPlay } from "react-icons/fa"
+import { FaPlay, FaGavel, FaUniversity, FaUsers, FaChalkboardTeacher } from "react-icons/fa"
 
 const YOUTUBE_URL = "https://youtube.com/@ccmgrupoconsultor?si=n10-x9GuDYLEEVj4"
 
@@ -10,8 +10,9 @@ export default function VideoSection() {
         <div className="text-center mb-10 max-w-2xl mx-auto">
           <h2 className="text-3xl lg:text-5xl font-black text-[#2C3E50] mb-4">Conoce a Mapura</h2>
           <p className="text-base lg:text-lg text-[#2C3E50]/80 leading-relaxed">
-            Más de una firma de abogados, somos el equipo que muchas familias y empresarios eligen cuando más lo
-            necesitan. Conoce quiénes somos y cómo trabajamos.
+            Más que una firma de abogados, somos un equipo que acompaña a personas, familias y empresarios cuando más
+            necesitan claridad, respaldo y soluciones. Conoce quiénes somos, cómo trabajamos y por qué tantas
+            personas confían en nosotros para encontrar un camino hacia adelante.
           </p>
         </div>
 
@@ -36,10 +37,51 @@ export default function VideoSection() {
           </div>
         </a>
 
-        <p className="text-center text-sm lg:text-base text-[#2C3E50]/70 max-w-2xl mx-auto mt-6">
-          Liderado por la Abogada <strong className="text-[#2C3E50]">Claudia Zapata Mapura</strong>, experta en Ley de
-          Insolvencia con participación activa en los principales congresos jurídicos del país.
-        </p>
+        <div className="max-w-3xl mx-auto mt-8 bg-blue-50 rounded-3xl p-6 lg:p-8">
+          <p className="text-center text-base lg:text-lg font-bold text-[#2C3E50] mb-5">
+            Dirigido por la abogada <span className="text-[#4EA5A7]">Claudia Zapata Mapura</span>
+          </p>
+
+          <ul className="space-y-3">
+            <li className="flex items-start gap-3">
+              <span className="bg-[#4EA5A7]/10 p-2 rounded-full flex-shrink-0 mt-0.5">
+                <FaGavel className="text-[#4EA5A7] text-sm" />
+              </span>
+              <span className="text-sm lg:text-base text-[#2C3E50]/80 leading-relaxed">
+                Experta en Ley de Insolvencia
+              </span>
+            </li>
+
+            <li className="flex items-start gap-3">
+              <span className="bg-[#4EA5A7]/10 p-2 rounded-full flex-shrink-0 mt-0.5">
+                <FaUniversity className="text-[#4EA5A7] text-sm" />
+              </span>
+              <span className="text-sm lg:text-base text-[#2C3E50]/80 leading-relaxed">
+                Miembro del Instituto Iberoamericano de Derecho Concursal y del Instituto Colombiano de Derecho
+                Concursal
+              </span>
+            </li>
+
+            <li className="flex items-start gap-3">
+              <span className="bg-[#4EA5A7]/10 p-2 rounded-full flex-shrink-0 mt-0.5">
+                <FaUsers className="text-[#4EA5A7] text-sm" />
+              </span>
+              <span className="text-sm lg:text-base text-[#2C3E50]/80 leading-relaxed">
+                Miembro de la Junta Directiva de ACEIN y del grupo de Mujeres Expertas en Insolvencia en Colombia
+              </span>
+            </li>
+
+            <li className="flex items-start gap-3">
+              <span className="bg-[#4EA5A7]/10 p-2 rounded-full flex-shrink-0 mt-0.5">
+                <FaChalkboardTeacher className="text-[#4EA5A7] text-sm" />
+              </span>
+              <span className="text-sm lg:text-base text-[#2C3E50]/80 leading-relaxed">
+                Amplia trayectoria como ponente, conferencista y docente en universidades y Cámaras de Comercio del
+                país
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
   )

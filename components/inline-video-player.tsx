@@ -25,7 +25,7 @@ export default function InlineVideoPlayer({
         controls
         autoPlay
         playsInline
-        className={`w-full h-full object-cover ${className}`}
+        className={`w-full h-full object-contain bg-black ${className}`}
       >
         Tu navegador no soporta el elemento de video.
       </video>

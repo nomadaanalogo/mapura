@@ -10,7 +10,6 @@ import InlineVideoPlayer from "@/components/inline-video-player"
 const TOTAL_STEPS = 2
 
 const TIPOS_DEUDA = [
-  "Bancarios",
   "Libre Inversión",
   "Libranza",
   "Vehicular",
@@ -19,7 +18,6 @@ const TIPOS_DEUDA = [
   "Consumo",
   "Leasing",
   "Hipotecario",
-  "Cooperativas",
   "Laborales",
   "Alimentos",
   "Fiscales (Impuestos DIAN, Gobernación, Alcaldía)",

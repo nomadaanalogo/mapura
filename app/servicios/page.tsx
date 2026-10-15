@@ -93,8 +93,8 @@ export default function ServiciosPage() {
 
       <Header />
       <ServicesHeroSection />
-      <ServicesInsolvencyHighlightSection />
       <ServicesSection />
+      <ServicesInsolvencyHighlightSection />
       <WhyMapuraSection />
       <LocationSection />
       <ServicesFaqSection />

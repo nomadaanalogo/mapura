@@ -6,9 +6,9 @@ import { FaAward, FaTrophy } from "react-icons/fa"
 export default function ServicesHeroSection() {
   return (
     <section className="pt-6 pb-16 lg:pt-8 lg:pb-20 relative overflow-hidden min-h-[600px] lg:min-h-[700px]">
-      {/* Desktop background: brand texture on the left, behind the text content */}
+      {/* Background: brand texture, light overlay (all breakpoints) */}
       <div
-        className="hidden lg:block absolute inset-0"
+        className="absolute inset-0"
         style={{
           backgroundImage: `url('/images/fondo-textura-mapura.webp')`,
           backgroundSize: "cover",
@@ -34,18 +34,6 @@ export default function ServicesHeroSection() {
             left: "-5%",
           }}
         />
-      </div>
-
-      {/* Mobile background: brand texture, heavily darkened */}
-      <div
-        className="lg:hidden absolute inset-0"
-        style={{
-          backgroundImage: `url('/images/fondo-textura-mapura.webp')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-[#2C3E50]/90" />
       </div>
 
       {/* Desktop photo, full-bleed on the right */}
@@ -81,8 +69,7 @@ export default function ServicesHeroSection() {
             alt="Mapura Grupo Consultor"
             width={280}
             height={100}
-            className="h-24 w-auto object-contain"
-            style={{ filter: "brightness(0) invert(1)" }}
+            className="h-20 w-auto object-contain"
           />
         </div>
 
@@ -96,30 +83,30 @@ export default function ServicesHeroSection() {
           />
 
           <div className="space-y-6">
-            <p className="text-white/80 lg:text-[#4EA5A7] font-bold uppercase tracking-wide text-xs lg:text-sm">
+            <p className="text-[#4EA5A7] font-bold uppercase tracking-wide text-xs lg:text-sm">
               Servicios Jurídicos Mapura
             </p>
 
             <h1 className="text-3xl lg:text-4xl xl:text-5xl font-black leading-tight text-balance">
-              <span className="text-[#7fd4d6] lg:text-[#4EA5A7]">Abogados en Palmira </span>
-              <span className="text-white lg:text-[#2C3E50]">para proteger tus derechos y resolver tus problemas legales</span>
+              <span className="text-[#4EA5A7]">Abogados en Palmira </span>
+              <span className="text-[#2C3E50]">para proteger tus derechos y resolver tus problemas legales</span>
             </h1>
 
-            <p className="text-base lg:text-xl text-white/90 lg:text-[#2C3E50]/80 leading-relaxed text-pretty max-w-3xl lg:max-w-xl">
+            <p className="text-base lg:text-xl text-[#2C3E50]/80 leading-relaxed text-pretty max-w-3xl lg:max-w-xl">
               Asesoría y representación jurídica para personas, familias, comerciantes y empresas. Atención
               presencial en Palmira y virtual a nivel nacional.
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 bg-white/10 lg:bg-blue-50 px-3 py-1.5 rounded-full">
-                <FaAward className="text-[#7fd4d6] lg:text-[#4EA5A7] text-sm" />
-                <span className="text-xs lg:text-sm font-semibold text-white lg:text-[#2C3E50]">
+              <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-full">
+                <FaAward className="text-[#4EA5A7] text-sm" />
+                <span className="text-xs lg:text-sm font-semibold text-[#2C3E50]">
                   +13 años de experiencia
                 </span>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 lg:bg-blue-50 px-3 py-1.5 rounded-full">
-                <FaTrophy className="text-[#7fd4d6] lg:text-[#4EA5A7] text-sm" />
-                <span className="text-xs lg:text-sm font-semibold text-white lg:text-[#2C3E50]">
+              <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-full">
+                <FaTrophy className="text-[#4EA5A7] text-sm" />
+                <span className="text-xs lg:text-sm font-semibold text-[#2C3E50]">
                   +500 casos resueltos
                 </span>
               </div>
@@ -140,6 +127,28 @@ export default function ServicesHeroSection() {
           >
             Agendar mi consulta
           </button>
+
+          {/* Mobile photo: shown in normal flow below the content, hidden on desktop (desktop has the full-bleed photo) */}
+          <div
+            className="lg:hidden relative self-center w-full max-w-[480px] aspect-[1600/1067]"
+            style={{
+              maskImage:
+                "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%), linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%), linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
+              maskComposite: "intersect",
+              WebkitMaskComposite: "source-in",
+            }}
+          >
+            <Image
+              src="/images/abogados_servicio.webp"
+              alt="Equipo de abogados de Mapura Grupo Consultor en Palmira"
+              fill
+              sizes="100vw"
+              className="object-cover object-top"
+              priority
+            />
+          </div>
         </div>
       </div>
     </section>
