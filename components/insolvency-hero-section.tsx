@@ -104,7 +104,7 @@ export default function InsolvencyHeroSection() {
                 contactSection.scrollIntoView({ behavior: "smooth", block: "start" })
               }
             }}
-            className="w-fit bg-green-500 hover:bg-green-600 text-white px-7 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-bold rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-400 flex items-center justify-center self-start text-center"
+            className="w-fit bg-green-500 hover:bg-green-600 text-white px-7 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-bold rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-400 flex items-center justify-center self-start text-center relative z-10"
             style={{
               boxShadow: "0 0 30px rgba(34, 197, 94, 0.3), 0 10px 25px -5px rgba(0, 0, 0, 0.1)",
             }}
@@ -121,33 +121,32 @@ export default function InsolvencyHeroSection() {
             href={YOUTUBE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="self-start -mt-2 lg:mt-0 text-[#2C3E50]/70 hover:text-[#2C3E50] text-sm font-semibold underline underline-offset-2 transition-colors"
+            className="relative z-10 self-start -mt-2 lg:mt-0 text-[#2C3E50]/70 hover:text-[#2C3E50] text-sm font-semibold underline underline-offset-2 transition-colors"
           >
             Conócenos en nuestro canal de YouTube
           </a>
 
           {/* Mobile photo: shown in normal flow below the content, hidden on desktop (desktop has the full-bleed photo) */}
-          {/* Aligned right and bleeding to the screen edge; top and left edges fade into the background */}
-          <div className="lg:hidden relative self-end -mr-4 w-[82vw] max-w-[380px] aspect-[1/1]">
+          {/* Rises behind the CTA so the YouTube link sits at head height. The photo is nudged right/down inside
+              the frame, and the elliptical mask (anchored bottom-right) makes the whole top and left edges fade out in a curve. */}
+          <div className="lg:hidden relative self-end -mr-4 -mt-[calc(40vw+2rem)] w-screen max-w-[520px] aspect-[1/1]">
             <div
-              className="absolute inset-0"
+              className="absolute inset-0 overflow-hidden"
               style={{
-                maskImage:
-                  "linear-gradient(to bottom, transparent 0%, black 22%), linear-gradient(to right, transparent 0%, black 30%)",
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, transparent 0%, black 22%), linear-gradient(to right, transparent 0%, black 30%)",
-                maskComposite: "intersect",
-                WebkitMaskComposite: "source-in",
+                maskImage: "radial-gradient(ellipse 88% 85% at 100% 100%, black 70%, transparent 100%)",
+                WebkitMaskImage: "radial-gradient(ellipse 88% 85% at 100% 100%, black 70%, transparent 100%)",
               }}
             >
-              <Image
-                src="/images/dr-mapura-office.webp"
-                alt="Abogada Claudia Zapata Mapura - Experta en Ley de Insolvencia Económica"
-                fill
-                sizes="82vw"
-                className="object-cover object-top"
-                priority
-              />
+              <div className="absolute top-[15%] left-[12%] w-full h-full">
+                <Image
+                  src="/images/dr-mapura-office.webp"
+                  alt="Abogada Claudia Zapata Mapura - Experta en Ley de Insolvencia Económica"
+                  fill
+                  sizes="100vw"
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
             </div>
             <div className="absolute bottom-3 right-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg">
               <p className="text-sm font-bold text-[#2C3E50] whitespace-nowrap">Dra. Claudia Mapura</p>
