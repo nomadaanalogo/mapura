@@ -127,28 +127,27 @@ export default function InsolvencyHeroSection() {
           </a>
 
           {/* Mobile photo: shown in normal flow below the content, hidden on desktop (desktop has the full-bleed photo) */}
-          {/* Rises behind the CTA so the YouTube link sits at head height. The photo is nudged right/down inside
-              the frame, and the elliptical mask (anchored bottom-right) makes the whole top and left edges fade out in a curve. */}
-          <div className="lg:hidden relative self-end -mr-4 -mt-[calc(40vw-8px)] w-screen max-w-[520px] aspect-[1/1]">
+          {/* Full-width block, edge to edge; top and bottom edges fade 90% into the background */}
+          <div className="lg:hidden relative self-start -ml-4 w-screen aspect-square">
             <div
-              className="absolute inset-0 overflow-hidden"
+              className="absolute inset-0"
               style={{
-                maskImage: "radial-gradient(ellipse 88% 85% at 100% 100%, black 85%, transparent 100%)",
-                WebkitMaskImage: "radial-gradient(ellipse 88% 85% at 100% 100%, black 85%, transparent 100%)",
+                maskImage:
+                  "linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, black 18%, black 82%, rgba(0,0,0,0.1) 100%)",
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, black 18%, black 82%, rgba(0,0,0,0.1) 100%)",
               }}
             >
-              <div className="absolute top-[15%] left-[12%] w-full h-full">
-                <Image
-                  src="/images/dr-mapura-office.webp"
-                  alt="Abogada Claudia Zapata Mapura - Experta en Ley de Insolvencia Económica"
-                  fill
-                  sizes="100vw"
-                  className="object-cover object-top"
-                  priority
-                />
-              </div>
+              <Image
+                src="/images/dr-mapura-office.webp"
+                alt="Abogada Claudia Zapata Mapura - Experta en Ley de Insolvencia Económica"
+                fill
+                sizes="100vw"
+                className="object-cover object-top"
+                priority
+              />
             </div>
-            <div className="absolute bottom-3 right-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg">
+            <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg">
               <p className="text-sm font-bold text-[#2C3E50] whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
               <p className="text-xs text-[#4EA5A7] font-semibold whitespace-nowrap">
                 Referente nacional en Ley de Insolvencia
