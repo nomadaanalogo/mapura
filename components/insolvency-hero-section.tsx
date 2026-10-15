@@ -99,7 +99,7 @@ export default function InsolvencyHeroSection() {
           />
 
           <div className="space-y-6">
-            <p className="text-white/80 lg:text-[#4EA5A7] font-bold uppercase tracking-wide text-xs lg:text-sm">
+            <p className="text-white/80 lg:text-black font-bold uppercase tracking-wide text-xs lg:text-sm">
               Tu tranquilidad financiera comienza con una buena asesoría
             </p>
 
