@@ -32,13 +32,15 @@ export default function Header() {
                 {menuOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}
               </button>
 
-              <Image
-                src="/images/mapura-logo-new.webp"
-                alt="Mapura Grupo Consultor"
-                width={180}
-                height={60}
-                className="h-12 w-auto object-contain"
-              />
+              <Link href="/" aria-label="Ir al inicio">
+                <Image
+                  src="/images/mapura-logo-new.webp"
+                  alt="Mapura Grupo Consultor"
+                  width={180}
+                  height={60}
+                  className="h-12 w-auto object-contain"
+                />
+              </Link>
             </div>
 
             <nav className="hidden lg:flex items-center gap-1 font-semibold">
@@ -65,14 +67,24 @@ export default function Header() {
             <div className="flex items-center space-x-3 lg:space-x-4">
               {/* Desktop contact info */}
               <div className="hidden lg:flex items-center space-x-6 text-[#2C3E50]">
-                <div className="flex items-center space-x-2">
+                <a
+                  href="tel:+573106537502"
+                  className="flex items-center space-x-2 hover:text-[#4EA5A7] transition-colors"
+                  aria-label="Llamar a Mapura"
+                >
                   <FaPhone className="text-sm" />
                   <span className="text-sm">+57 3106537502</span>
-                </div>
-                <div className="flex items-center space-x-2">
+                </a>
+                <a
+                  href="https://www.instagram.com/mapuragrupoconsultor"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 hover:text-[#4EA5A7] transition-colors"
+                  aria-label="Instagram de Mapura"
+                >
                   <FaInstagram className="text-sm" />
                   <span className="text-sm">@mapuragrupoconsultor</span>
-                </div>
+                </a>
               </div>
 
               {/* Mobile phone link */}
