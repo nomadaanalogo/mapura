@@ -56,11 +56,12 @@ export default function InsolvencyHeroSection() {
             />
           </div>
 
-          <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg">
-            <p className="text-sm lg:text-base font-bold text-[#2C3E50] whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
-            <p className="text-xs lg:text-sm text-[#4EA5A7] font-semibold whitespace-nowrap">
-              Referente nacional en Ley de Insolvencia
-            </p>
+          <div className="absolute bottom-8 left-[18%] bg-gradient-to-r from-[#1B2A3A]/75 via-[#1B2A3A]/45 to-transparent py-2.5 pl-3 pr-10 rounded-l-md">
+            <div className="border-l-[3px] border-[#4EA5A7] pl-3 [text-shadow:0_1px_6px_rgba(0,0,0,0.45)]">
+              <p className="text-sm lg:text-lg font-bold text-white whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
+              <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Fundadora</p>
+              <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Mapura Grupo Consultor</p>
+            </div>
           </div>
         </div>
       </div>
@@ -147,11 +148,12 @@ export default function InsolvencyHeroSection() {
                 priority
               />
             </div>
-            <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg">
-              <p className="text-sm font-bold text-[#2C3E50] whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
-              <p className="text-xs text-[#4EA5A7] font-semibold whitespace-nowrap">
-                Referente nacional en Ley de Insolvencia
-              </p>
+            <div className="absolute bottom-[20%] left-0 bg-gradient-to-r from-[#1B2A3A]/75 via-[#1B2A3A]/45 to-transparent py-2.5 pl-3 pr-10 rounded-l-md">
+              <div className="border-l-[3px] border-[#4EA5A7] pl-3 [text-shadow:0_1px_6px_rgba(0,0,0,0.45)]">
+                <p className="text-sm lg:text-lg font-bold text-white whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
+                <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Fundadora</p>
+                <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Mapura Grupo Consultor</p>
+              </div>
             </div>
           </div>
         </div>

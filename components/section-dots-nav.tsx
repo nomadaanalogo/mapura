@@ -46,7 +46,7 @@ export default function SectionDotsNav() {
   return (
     <nav
       aria-label="Secciones de la página"
-      className="fixed right-2 lg:right-5 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-2.5 lg:gap-3"
+      className="fixed right-2 lg:right-5 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-1.5 lg:gap-2"
     >
       {sections.map((s, i) => {
         const isActive = i === active
@@ -58,13 +58,13 @@ export default function SectionDotsNav() {
             aria-label={s.label}
             aria-current={isActive ? "true" : undefined}
             title={s.label}
-            className="group flex items-center justify-center w-5 h-5"
+            className="group flex items-center justify-center w-4 h-4"
           >
             <span
               className={`block rounded-full transition-all duration-300 ${
                 isActive
-                  ? "w-3.5 h-3.5 bg-[#4EA5A7] ring-2 ring-white shadow-[0_0_12px_rgba(78,165,167,0.8)]"
-                  : "w-2 h-2 bg-[#2C3E50]/40 ring-1 ring-white/70 group-hover:bg-[#4EA5A7]/70"
+                  ? "w-2.5 h-2.5 bg-[#4EA5A7] ring-1 ring-white shadow-[0_0_8px_rgba(78,165,167,0.8)]"
+                  : "w-1.5 h-1.5 bg-[#2C3E50]/40 ring-1 ring-white/70 group-hover:bg-[#4EA5A7]/70"
               }`}
             />
           </button>
