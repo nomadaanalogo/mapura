@@ -179,29 +179,29 @@ export default function ContactSection() {
 
         <div className="mt-16 text-center">
           <div className="flex flex-wrap justify-center items-center gap-8 text-white">
-            <div className="flex items-center space-x-3">
+            <a href="tel:+573106537502" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
               <FaPhone className="text-2xl" />
               <div>
                 <p className="font-semibold">Llámanos</p>
                 <p className="text-white/80">+57 3106537502</p>
               </div>
-            </div>
+            </a>
 
-            <div className="flex items-center space-x-3">
+            <a href="https://wa.me/573106537502" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
               <FaWhatsapp className="text-2xl" />
               <div>
                 <p className="font-semibold">WhatsApp</p>
                 <p className="text-white/80">+57 3106537502</p>
               </div>
-            </div>
+            </a>
 
-            <div className="flex items-center space-x-3">
+            <a href="https://www.instagram.com/mapuragrupoconsultor" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
               <FaInstagram className="text-2xl" />
               <div>
                 <p className="font-semibold">Instagram</p>
                 <p className="text-white/80">@mapuragrupoconsultor</p>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
