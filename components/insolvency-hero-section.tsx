@@ -57,7 +57,7 @@ export default function InsolvencyHeroSection() {
           </div>
 
           <div className="absolute top-1/2 -translate-y-1/2 right-8">
-            <div className="border-l-[3px] border-[#4EA5A7] pl-3 [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
+            <div className="border-l-[3px] border-[#4EA5A7] pl-3 [text-shadow:0_1px_3px_rgba(0,0,0,0.9),0_2px_14px_rgba(0,0,0,0.75)]">
               <p className="text-sm lg:text-lg font-bold text-white whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
               <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Fundadora Mapura Grupo Consultor</p>
               <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Referente nacional en Ley de Insolvencia</p>
@@ -143,7 +143,7 @@ export default function InsolvencyHeroSection() {
               />
             </div>
             <div className="absolute top-1/2 -translate-y-1/2 right-8">
-              <div className="border-l-[3px] border-[#4EA5A7] pl-3 [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
+              <div className="border-l-[3px] border-[#4EA5A7] pl-3 [text-shadow:0_1px_3px_rgba(0,0,0,0.9),0_2px_14px_rgba(0,0,0,0.75)]">
                 <p className="text-sm lg:text-lg font-bold text-white whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
                 <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Fundadora Mapura Grupo Consultor</p>
                 <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Referente nacional en Ley de Insolvencia</p>
