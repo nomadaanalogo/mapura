@@ -56,7 +56,7 @@ export default function InsolvencyHeroSection() {
             />
           </div>
 
-          <div className="absolute top-10 right-8">
+          <div className="absolute top-1/2 -translate-y-1/2 right-8">
             <div className="border-l-[3px] border-[#4EA5A7] pl-3 [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
               <p className="text-sm lg:text-lg font-bold text-white whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
               <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Fundadora Mapura Grupo Consultor</p>
@@ -68,26 +68,17 @@ export default function InsolvencyHeroSection() {
 
       <div className="container mx-auto px-4 lg:px-16 xl:px-24 relative z-10">
         <div className="flex flex-col items-start text-left space-y-6 lg:space-y-10 max-w-4xl lg:max-w-2xl">
-          {/* Logo + the page's only H1 (SEO keyword), small and tucked under the logo */}
-          <div className="space-y-1 lg:space-y-2">
+          {/* The logo is the page's only H1: its alt text carries the SEO keyword without changing the design */}
+          <h1>
             <Image
               src="/images/mapura-logo-new.webp"
-              alt="Mapura Grupo Consultor"
+              alt="Mapura Grupo Consultor – Abogados en Ley de Insolvencia Económica en Palmira y toda Colombia"
               width={280}
               height={100}
-              className="lg:hidden h-24 w-auto object-contain"
+              className="h-24 lg:h-36 w-auto object-contain"
+              priority
             />
-            <Image
-              src="/images/mapura-logo-new.webp"
-              alt="Mapura Grupo Consultor"
-              width={280}
-              height={100}
-              className="hidden lg:block h-36 w-auto object-contain"
-            />
-            <h1 className="text-[#2C3E50]/70 font-semibold text-xs lg:text-sm">
-              Abogados en Ley de Insolvencia Económica · Palmira y toda Colombia
-            </h1>
-          </div>
+          </h1>
 
           <div className="space-y-4 lg:space-y-6">
             <p className="text-[#2C3E50]/80 font-medium lg:font-bold uppercase tracking-wider lg:tracking-wide text-xs lg:text-sm">
@@ -151,7 +142,7 @@ export default function InsolvencyHeroSection() {
                 priority
               />
             </div>
-            <div className="absolute top-[20%] right-8">
+            <div className="absolute top-1/2 -translate-y-1/2 right-8">
               <div className="border-l-[3px] border-[#4EA5A7] pl-3 [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
                 <p className="text-sm lg:text-lg font-bold text-white whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
                 <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Fundadora Mapura Grupo Consultor</p>
