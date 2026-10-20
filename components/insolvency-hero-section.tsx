@@ -87,15 +87,16 @@ export default function InsolvencyHeroSection() {
           />
 
           <div className="space-y-4 lg:space-y-6">
-            <p className="text-[#2C3E50]/80 font-medium lg:font-bold uppercase tracking-wider lg:tracking-wide text-xs lg:text-sm">
-              Tu tranquilidad financiera comienza <br className="lg:hidden" />
-              con una buena asesoría
-            </p>
+            {/* SEO: the small eyebrow carries the keyword as the page's H1; the big headline is visually unchanged */}
+            <h1 className="text-[#2C3E50]/80 font-medium lg:font-bold uppercase tracking-wider lg:tracking-wide text-xs lg:text-sm">
+              Abogados en Ley de Insolvencia Económica <br className="lg:hidden" />
+              <span className="hidden lg:inline">· </span>Palmira y toda Colombia
+            </h1>
 
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-black leading-tight text-balance">
+            <p className="text-4xl lg:text-5xl xl:text-6xl font-black leading-tight text-balance">
               <span className="text-[#2C3E50]">Te ayudamos a recuperar </span>
               <span className="text-[#4EA5A7]">el control de tus finanzas</span>
-            </h1>
+            </p>
           </div>
 
           <button

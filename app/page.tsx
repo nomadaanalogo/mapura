@@ -17,9 +17,9 @@ import SectionDotsNav from "@/components/section-dots-nav"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Insolvencia Económica en Colombia | Detén embargos y renegocia deudas – Mapura",
+  title: "Insolvencia Económica: Abogados en Palmira y Colombia | Mapura",
   description:
-    "Firma de consultoria legal centrados en el cliente, Abogados en Ley de Insolvencia en Palmira, Valle del Cauca, con servicio a nivel nacional. Detén embargos y renegocia tus deudas. Agenda tu consulta.",
+    "Abogados en Ley de Insolvencia Económica en Palmira, Valle del Cauca. Detén embargos y renegocia tus deudas. Atención presencial y virtual en toda Colombia.",
   keywords: [
     "ley de insolvencia económica",
     "insolvencia económica Colombia",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     locale: "es_CO",
     url: "https://grupomapura.co",
     siteName: "Mapura Grupo Consultor",
-    title: "Insolvencia Económica en Colombia | Detén embargos y renegocia deudas – Mapura",
+    title: "Insolvencia Económica: Abogados en Palmira y Colombia | Mapura",
     description:
-      "Firma de consultoria legal centrados en el cliente, Abogados en Ley de Insolvencia en Palmira, Valle del Cauca, con servicio a nivel nacional. Detén embargos y renegocia tus deudas.",
+      "Abogados en Ley de Insolvencia Económica en Palmira, Valle del Cauca. Detén embargos y renegocia tus deudas. Atención presencial y virtual en toda Colombia.",
     images: [
       {
         url: "https://grupomapura.co/images/og-image.jpg",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Insolvencia Económica en Colombia | Mapura",
+    title: "Insolvencia Económica: Abogados en Palmira y Colombia | Mapura",
     description: "Detén embargos y renegocia tus deudas con la Ley de Insolvencia Económica. Atención nacional.",
     images: ["https://grupomapura.co/images/og-image.jpg"],
   },
@@ -72,7 +72,7 @@ export default function Home() {
     name: "Mapura Grupo Consultor - Ley de Insolvencia Económica",
     image: "https://grupomapura.co/images/mapura-logo-new.webp",
     description:
-      "Firma de consultoría legal centrados en el cliente. Abogados en Ley de Insolvencia en Palmira, Valle del Cauca, con servicio a nivel nacional.",
+      "Firma de consultoría legal centrada en el cliente. Abogados en Ley de Insolvencia Económica en Palmira, Valle del Cauca, con servicio en toda Colombia.",
     url: "https://grupomapura.co",
     telephone: "+573106537502",
     priceRange: "Consulta gratuita",
