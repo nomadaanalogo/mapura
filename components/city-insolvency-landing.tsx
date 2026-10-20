@@ -1,22 +1,18 @@
 import Image from "next/image"
 import Link from "next/link"
-import { FaCheckCircle, FaMapMarkerAlt, FaBuilding, FaVideo } from "react-icons/fa"
+import type { Metadata } from "next"
+import { FaCheckCircle, FaMapMarkerAlt, FaBuilding, FaVideo, FaHandshake } from "react-icons/fa"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import Header from "@/components/header"
+import HowItWorksSection from "@/components/how-it-works-section"
+import VideoSection from "@/components/video-section"
+import TestimonialsSection from "@/components/testimonials-section"
+import ContactSectionInsolvency from "@/components/contact-section-insolvency"
+import Footer from "@/components/footer"
+import SectionDotsNav from "@/components/section-dots-nav"
+import type { CityLanding } from "@/lib/city-landings"
 
-export type CityFaq = { question: string; answer: string }
-
-export type CityLanding = {
-  city: string
-  /** Intro paragraph under the hero headline */
-  intro: string
-  /** Paragraphs for the "how the process works in <city>" section */
-  processParagraphs: string[]
-  /** The three attention modes (presencial, oficina Palmira, virtual) */
-  attention: { title: string; description: string }[]
-  faqs: CityFaq[]
-}
-
-const ATTENTION_ICONS = [FaMapMarkerAlt, FaBuilding, FaVideo]
+const ATTENTION_ICONS = { map: FaMapMarkerAlt, office: FaBuilding, video: FaVideo, hearing: FaHandshake }
 
 const REQUISITOS = [
   "Ser persona natural no comerciante (empleado, pensionado o independiente) o pequeño comerciante.",
@@ -24,8 +20,8 @@ const REQUISITOS = [
   "Que esas deudas en mora representen al menos la mitad del total de lo que debes.",
 ]
 
-// Landing de insolvencia por ciudad: hero + contenido local + requisitos. Las secciones
-// compartidas (pasos, video, testimonios, formulario) se componen en cada página.
+// Landing de insolvencia por ciudad: hero + contenido local + requisitos + secciones compartidas
+// del inicio (pasos, video, testimonios, formulario). El contenido de cada ciudad vive en lib/city-landings.ts.
 export function CityHero({ data }: { data: CityLanding }) {
   return (
     <section className="pt-6 pb-12 lg:pt-10 lg:pb-20 relative overflow-hidden">
@@ -116,8 +112,8 @@ export function CityAttentionSection({ data }: { data: CityLanding }) {
           Cómo te atendemos si estás en {data.city}
         </h2>
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
-          {data.attention.map((a, i) => {
-            const Icon = ATTENTION_ICONS[i] ?? FaCheckCircle
+          {data.attention.map((a) => {
+            const Icon = ATTENTION_ICONS[a.icon]
             return (
               <div key={a.title} className="bg-white rounded-2xl shadow-lg p-6 lg:p-8">
                 <Icon className="text-3xl text-[#4EA5A7] mb-4" />
@@ -167,7 +163,7 @@ export function CityFaqSection({ data }: { data: CityLanding }) {
 }
 
 /** JSON-LD for a city landing: LegalService serving the city + FAQPage + breadcrumb */
-export function cityJsonLd(data: CityLanding, url: string) {
+function cityJsonLd(data: CityLanding, url: string) {
   return [
     {
       "@context": "https://schema.org",
@@ -205,4 +201,60 @@ export function cityJsonLd(data: CityLanding, url: string) {
       ],
     },
   ]
+}
+
+const cityUrl = (data: CityLanding) => `https://grupomapura.co/${data.slug}`
+
+export function cityMetadata(data: CityLanding): Metadata {
+  const url = cityUrl(data)
+  return {
+    title: data.title,
+    description: data.description,
+    keywords: data.keywords,
+    openGraph: {
+      type: "website",
+      locale: "es_CO",
+      url,
+      siteName: "Mapura Grupo Consultor",
+      title: data.title,
+      description: data.description,
+      images: [
+        {
+          url: "https://grupomapura.co/images/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: `Mapura - Abogados de Insolvencia Económica en ${data.city}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.title,
+      description: data.description,
+      images: ["https://grupomapura.co/images/og-image.jpg"],
+    },
+    alternates: { canonical: url },
+  }
+}
+
+export default function CityLandingPage({ data }: { data: CityLanding }) {
+  return (
+    <main className="min-h-screen">
+      {cityJsonLd(data, cityUrl(data)).map((ld, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      ))}
+
+      <Header />
+      <CityHero data={data} />
+      <CityProcessSection data={data} />
+      <CityAttentionSection data={data} />
+      <HowItWorksSection />
+      <VideoSection />
+      <TestimonialsSection />
+      <CityFaqSection data={data} />
+      <ContactSectionInsolvency />
+      <Footer />
+      <SectionDotsNav />
+    </main>
+  )
 }

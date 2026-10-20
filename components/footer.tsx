@@ -1,11 +1,12 @@
 import Link from "next/link"
 import Image from "next/image"
 import { FaMapMarkerAlt, FaPhone, FaInstagram } from "react-icons/fa"
+import { CITY_LANDINGS } from "@/lib/city-landings"
 
 // Landing pages de insolvencia por ciudad (no van en el menú; se enlazan aquí para SEO)
 const CITY_PAGES = [
   { href: "/", city: "Palmira" },
-  { href: "/insolvencia-economica-cali", city: "Cali" },
+  ...CITY_LANDINGS.map((c) => ({ href: `/${c.slug}`, city: c.city })),
 ]
 
 const GOOGLE_MAPS_URL =

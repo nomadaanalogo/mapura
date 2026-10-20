@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { CITY_LANDINGS } from '@/lib/city-landings'
 
 export const dynamic = 'force-static'
 
@@ -18,12 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/insolvencia-economica-cali`,
+    ...CITY_LANDINGS.map((c) => ({
+      url: `${baseUrl}/${c.slug}`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
-    },
+    })),
     {
       url: `${baseUrl}/academia`,
       lastModified: new Date(),
