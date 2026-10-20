@@ -67,31 +67,33 @@ export default function InsolvencyHeroSection() {
       </div>
 
       <div className="container mx-auto px-4 lg:px-16 xl:px-24 relative z-10">
-        <div className="lg:hidden mb-2">
-          <Image
-            src="/images/mapura-logo-new.webp"
-            alt="Mapura Grupo Consultor"
-            width={280}
-            height={100}
-            className="h-24 w-auto object-contain"
-          />
-        </div>
-
         <div className="flex flex-col items-start text-left space-y-6 lg:space-y-10 max-w-4xl lg:max-w-2xl">
-          <Image
-            src="/images/mapura-logo-new.webp"
-            alt="Mapura Grupo Consultor"
-            width={280}
-            height={100}
-            className="hidden lg:block h-36 w-auto object-contain self-start"
-          />
+          {/* Logo + the page's only H1 (SEO keyword), small and tucked under the logo */}
+          <div className="space-y-1 lg:space-y-2">
+            <Image
+              src="/images/mapura-logo-new.webp"
+              alt="Mapura Grupo Consultor"
+              width={280}
+              height={100}
+              className="lg:hidden h-24 w-auto object-contain"
+            />
+            <Image
+              src="/images/mapura-logo-new.webp"
+              alt="Mapura Grupo Consultor"
+              width={280}
+              height={100}
+              className="hidden lg:block h-36 w-auto object-contain"
+            />
+            <h1 className="text-[#2C3E50]/70 font-semibold text-xs lg:text-sm">
+              Abogados en Ley de Insolvencia Económica · Palmira y toda Colombia
+            </h1>
+          </div>
 
           <div className="space-y-4 lg:space-y-6">
-            {/* SEO: the small eyebrow carries the keyword as the page's H1; the big headline is visually unchanged */}
-            <h1 className="text-[#2C3E50]/80 font-medium lg:font-bold uppercase tracking-wider lg:tracking-wide text-xs lg:text-sm">
-              Abogados en Ley de Insolvencia Económica <br className="lg:hidden" />
-              <span className="hidden lg:inline">· </span>Palmira y toda Colombia
-            </h1>
+            <p className="text-[#2C3E50]/80 font-medium lg:font-bold uppercase tracking-wider lg:tracking-wide text-xs lg:text-sm">
+              Tu tranquilidad financiera comienza <br className="lg:hidden" />
+              con una buena asesoría
+            </p>
 
             <p className="text-4xl lg:text-5xl xl:text-6xl font-black leading-tight text-balance">
               <span className="text-[#2C3E50]">Te ayudamos a recuperar </span>
