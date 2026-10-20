@@ -83,6 +83,12 @@ export default function ContactSection() {
           <p className="text-xl text-white/90">
             Deja tus datos y uno de nuestros expertos se comunicará en breve contigo.
           </p>
+          <Link
+            href="/#contact-form"
+            className="inline-block mt-4 text-green-300 hover:text-green-200 text-sm md:text-base font-semibold underline underline-offset-4 transition-colors"
+          >
+            ¿Buscas asesoría en Ley de Insolvencia? Escríbenos aquí →
+          </Link>
         </div>
 
         <div className="max-w-2xl mx-auto">

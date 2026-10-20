@@ -211,7 +211,7 @@ export default function ContactSectionInsolvency() {
           <p className="text-lg md:text-xl text-white/90">Responde las siguientes preguntas y permítenos evaluar tu caso.</p>
           <Link
             href="/servicios#contact-form"
-            className="inline-block mt-4 text-white/80 hover:text-white text-sm md:text-base font-semibold underline underline-offset-4 transition-colors"
+            className="inline-block mt-4 text-green-300 hover:text-green-200 text-sm md:text-base font-semibold underline underline-offset-4 transition-colors"
           >
             ¿Buscas asesoría en otra área del derecho? Escríbenos aquí →
           </Link>
