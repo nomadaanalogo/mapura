@@ -209,6 +209,12 @@ export default function ContactSectionInsolvency() {
             Da el primer paso y recupera tu tranquilidad
           </h2>
           <p className="text-lg md:text-xl text-white/90">Responde las siguientes preguntas y permítenos evaluar tu caso.</p>
+          <Link
+            href="/servicios#contact-form"
+            className="inline-block mt-4 text-white/80 hover:text-white text-sm md:text-base font-semibold underline underline-offset-4 transition-colors"
+          >
+            ¿Buscas asesoría en otra área del derecho? Escríbenos aquí →
+          </Link>
         </div>
 
         <div className="max-w-2xl mx-auto">
