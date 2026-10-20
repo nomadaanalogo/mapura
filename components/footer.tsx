@@ -2,6 +2,12 @@ import Link from "next/link"
 import Image from "next/image"
 import { FaMapMarkerAlt, FaPhone, FaInstagram } from "react-icons/fa"
 
+// Landing pages de insolvencia por ciudad (no van en el menú; se enlazan aquí para SEO)
+const CITY_PAGES = [
+  { href: "/", city: "Palmira" },
+  { href: "/insolvencia-economica-cali", city: "Cali" },
+]
+
 const GOOGLE_MAPS_URL =
   "https://www.google.com/maps/place/Mapura+Grupo+Consultor+%7C+Abogados/@3.5506895,-76.2924628,1086m/data=!3m2!1e3!4b1!4m6!3m5!1s0x8e3a050051720b25:0x596f567203f7b177!8m2!3d3.5506895!4d-76.2898879!16s%2Fg%2F11xt0yny0s!5m1!1e1"
 
@@ -83,7 +89,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 text-center text-white/50 text-xs space-y-1">
+        <p className="mt-10 text-center text-sm text-white/60">
+          Abogados de insolvencia económica en{" "}
+          {CITY_PAGES.map((c, i) => (
+            <span key={c.href}>
+              {i > 0 && " · "}
+              <Link href={c.href} className="hover:text-white underline decoration-white/30 transition-colors">
+                {c.city}
+              </Link>
+            </span>
+          ))}
+        </p>
+
+        <div className="border-t border-white/10 mt-6 pt-6 text-center text-white/50 text-xs space-y-1">
           <p>© {new Date().getFullYear()} Mapura Grupo Consultor. Todos los derechos reservados.</p>
           <p>
             Desarrollado por{" "}
