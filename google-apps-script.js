@@ -93,6 +93,18 @@ function resumenInsolvenciaHtml(data) {
 }
 
 const WHATSAPP_URL = "https://wa.me/573106537502"
+const LOGO_URL = "https://grupomapura.co/images/mapura-logo-email.png"
+const FOTO_DRA_URL = "https://grupomapura.co/images/dr-mapura-office-email.jpg"
+
+// Descarga una imagen para incrustarla en el correo (cid:) en lugar de enlazarla.
+// Así el logo y la foto se ven siempre, aunque el cliente de correo bloquee imágenes externas.
+function obtenerImagenInline(url) {
+  try {
+    return UrlFetchApp.fetch(url).getBlob()
+  } catch (error) {
+    return null
+  }
+}
 
 // Escapa los datos que escribe el usuario antes de meterlos en el HTML del correo.
 function esc(valor) {
@@ -152,8 +164,19 @@ function enviarEmailCliente(data) {
   const asunto = "Hemos recibido tu solicitud - Mapura"
   const nombre = esc((data.nombre || "").trim().split(" ")[0])
 
-  // Bloque de video de bienvenida (solo insolvencia). Todo es HTML/CSS, sin imágenes,
-  // para que se vea bien aunque el correo bloquee las imágenes.
+  // Logo y foto se incrustan como imágenes (cid:) para que se vean siempre, aunque el
+  // cliente de correo bloquee imágenes externas. Si la descarga falla, se usa la URL
+  // directa como respaldo (puede requerir que el usuario habilite ver imágenes).
+  const logoBlob = obtenerImagenInline(LOGO_URL)
+  const fotoBlob = esInsolvencia(data) ? obtenerImagenInline(FOTO_DRA_URL) : null
+
+  const inlineImages = {}
+  if (logoBlob) inlineImages.logoMapura = logoBlob
+  if (fotoBlob) inlineImages.fotoDraMapura = fotoBlob
+
+  const logoSrc = logoBlob ? "cid:logoMapura" : LOGO_URL
+  const fotoSrc = fotoBlob ? "cid:fotoDraMapura" : FOTO_DRA_URL
+
   const videoHtml = esInsolvencia(data)
     ? `
       <tr>
@@ -174,32 +197,34 @@ function enviarEmailCliente(data) {
       <tr>
         <td style="padding: 0 32px;">
           <a href="${BIENVENIDA_URL}" target="_blank" style="text-decoration: none; display: block;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#1F5F6E"
-              style="background-color: #1F5F6E; background-image: linear-gradient(135deg, #2C3E50 0%, #1F5F6E 55%, #4EA5A7 100%); border-radius: 18px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-radius: 18px;">
               <tr>
-                <td align="center" style="padding: 48px 24px 18px 24px;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <td style="border-radius: 18px 18px 0 0;">
+                  <img
+                    src="${fotoSrc}"
+                    width="536"
+                    alt="Dra. Claudia Zapata Mapura"
+                    style="width: 100%; display: block; border: 0; border-radius: 18px 18px 0 0;"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td bgcolor="#1F5F6E"
+                  style="background-color: #1F5F6E; background-image: linear-gradient(135deg, #2C3E50 0%, #1F5F6E 55%, #4EA5A7 100%); border-radius: 0 0 18px 18px; padding: 20px 24px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                     <tr>
-                      <td align="center" valign="middle" width="88" height="88" bgcolor="#ffffff"
-                        style="width: 88px; height: 88px; background-color: #ffffff; border-radius: 44px; font-size: 32px; line-height: 88px; color: #1B2A3A; text-align: center;">
-                        &#9654;
+                      <td width="48" valign="middle">
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td align="center" valign="middle" width="48" height="48" bgcolor="#ffffff"
+                              style="width: 48px; height: 48px; background-color: #ffffff; border-radius: 24px; font-size: 18px; line-height: 48px; color: #1B2A3A; text-align: center;">
+                              &#9654;
+                            </td>
+                          </tr>
+                        </table>
                       </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td align="center" style="padding: 0 24px 36px 24px; font-size: 16px; font-weight: bold; color: #ffffff; letter-spacing: 0.5px;">
-                  Un mensaje de la Dra. Claudia Zapata Mapura para ti
-                </td>
-              </tr>
-              <tr>
-                <td align="right" style="padding: 0 16px 16px 16px;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="background-color: #ffffff; border-radius: 12px;">
-                    <tr>
-                      <td style="padding: 12px 18px; text-align: left;">
-                        <p style="margin: 0; font-size: 15px; font-weight: bold; color: #1B2A3A;">Dra. Claudia Zapata Mapura</p>
-                        <p style="margin: 2px 0 0 0; font-size: 13px; color: #3B8F99;">Experta en Ley de Insolvencia</p>
+                      <td valign="middle" style="padding-left: 14px; font-size: 14px; font-weight: bold; color: #ffffff;">
+                        Un mensaje de la Dra. Claudia Zapata Mapura para ti
                       </td>
                     </tr>
                   </table>
@@ -227,13 +252,10 @@ function enviarEmailCliente(data) {
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff"
                 style="max-width: 600px; background-color: #ffffff; border-radius: 22px; font-family: Arial, Helvetica, sans-serif; color: #2C3E50;">
 
-                <!-- Marca (en texto, no imagen) -->
+                <!-- Marca -->
                 <tr>
                   <td style="padding: 32px 32px 0 32px;">
-                    <p style="margin: 0; font-size: 30px; font-weight: bold; line-height: 1.1; color: #1B2A3A; letter-spacing: -0.5px;">
-                      <span style="color: #4EA5A7;">&#9670;</span> Mapura
-                    </p>
-                    <p style="margin: 2px 0 0 30px; font-size: 13px; color: #4EA5A7;">grupo consultor</p>
+                    <img src="${logoSrc}" width="150" alt="Mapura Grupo Consultor" style="display: block; border: 0;" />
                   </td>
                 </tr>
 
@@ -320,6 +342,7 @@ function enviarEmailCliente(data) {
     to: data.email,
     subject: asunto,
     htmlBody: mensaje,
+    inlineImages: inlineImages,
   })
 }
 
