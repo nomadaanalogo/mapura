@@ -8,7 +8,6 @@ import ServicesFaqSection from "@/components/services-faq-section"
 import FinalCtaServicesSection from "@/components/final-cta-services-section"
 import ContactSection from "@/components/contact-section"
 import Footer from "@/components/footer"
-import SectionDotsNav from "@/components/section-dots-nav"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -102,7 +101,6 @@ export default function ServiciosPage() {
       <FinalCtaServicesSection />
       <ContactSection />
       <Footer />
-      <SectionDotsNav />
     </main>
   )
 }

@@ -4,7 +4,6 @@ import InsolvencyIntroSection from "@/components/insolvency-intro-section"
 import EmotionalCtaBanner from "@/components/emotional-cta-banner"
 import HowItWorksSection from "@/components/how-it-works-section"
 import InsolvencyBrandSection from "@/components/insolvency-brand-section"
-import VideoSection from "@/components/video-section"
 import CongressGallerySection from "@/components/congress-gallery-section"
 import TestimonialsSection from "@/components/testimonials-section"
 import LocationSection from "@/components/location-section"
@@ -13,7 +12,6 @@ import FinalCtaInsolvencySection from "@/components/final-cta-insolvency-section
 import ContactSectionInsolvency from "@/components/contact-section-insolvency"
 import SocialGrowthSection from "@/components/social-growth-section"
 import Footer from "@/components/footer"
-import SectionDotsNav from "@/components/section-dots-nav"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -153,7 +151,6 @@ export default function Home() {
       <EmotionalCtaBanner />
       <HowItWorksSection />
       <InsolvencyBrandSection />
-      <VideoSection />
       <CongressGallerySection />
       <TestimonialsSection />
       <LocationSection />
@@ -162,7 +159,6 @@ export default function Home() {
       <ContactSectionInsolvency />
       <SocialGrowthSection />
       <Footer />
-      <SectionDotsNav />
     </main>
   )
 }

@@ -5,11 +5,9 @@ import { FaCheckCircle, FaMapMarkerAlt, FaBuilding, FaVideo, FaHandshake } from 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import Header from "@/components/header"
 import HowItWorksSection from "@/components/how-it-works-section"
-import VideoSection from "@/components/video-section"
 import TestimonialsSection from "@/components/testimonials-section"
 import ContactSectionInsolvency from "@/components/contact-section-insolvency"
 import Footer from "@/components/footer"
-import SectionDotsNav from "@/components/section-dots-nav"
 import type { CityLanding } from "@/lib/city-landings"
 
 const ATTENTION_ICONS = { map: FaMapMarkerAlt, office: FaBuilding, video: FaVideo, hearing: FaHandshake }
@@ -249,12 +247,10 @@ export default function CityLandingPage({ data }: { data: CityLanding }) {
       <CityProcessSection data={data} />
       <CityAttentionSection data={data} />
       <HowItWorksSection />
-      <VideoSection />
       <TestimonialsSection />
       <CityFaqSection data={data} />
       <ContactSectionInsolvency />
       <Footer />
-      <SectionDotsNav />
     </main>
   )
 }

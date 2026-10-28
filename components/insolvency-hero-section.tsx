@@ -56,11 +56,26 @@ export default function InsolvencyHeroSection() {
             />
           </div>
 
-          <div className="absolute top-1/2 -translate-y-1/2 right-8">
-            <div className="border-l-[3px] border-[#4EA5A7] pl-3 [text-shadow:0_1px_3px_rgba(0,0,0,0.9),0_2px_14px_rgba(0,0,0,0.75)]">
-              <p className="text-sm lg:text-lg font-bold text-white whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
-              <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Fundadora Mapura Grupo Consultor</p>
-              <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Referente nacional en Ley de Insolvencia</p>
+          {/* Aligned with the visible top of the logo artwork, not the image box
+              (the logo file has ~27% transparent padding above the wordmark) */}
+          <div className="absolute lg:top-[70px] lg:right-8">
+            {/* Dark vignette behind the label so it stays legible over any part of the photo */}
+            <div
+              className="absolute -inset-4 -z-10 rounded-2xl"
+              style={{
+                background: "radial-gradient(circle at top right, rgba(0,0,0,0.55) 0%, transparent 75%)",
+              }}
+            />
+            <div className="border-l-4 border-[#4EA5A7] pl-3 [text-shadow:0_1px_4px_rgba(0,0,0,0.95),0_2px_16px_rgba(0,0,0,0.8)]">
+              <p className="text-lg lg:text-2xl font-black text-white whitespace-nowrap tracking-tight">
+                Dra. Claudia Zapata Mapura
+              </p>
+              <p className="text-sm lg:text-base font-semibold text-white whitespace-nowrap">
+                Fundadora Mapura Grupo Consultor
+              </p>
+              <p className="text-sm lg:text-base font-semibold text-white whitespace-nowrap">
+                Referente nacional en Ley de Insolvencia
+              </p>
             </div>
           </div>
         </div>
@@ -142,11 +157,22 @@ export default function InsolvencyHeroSection() {
                 priority
               />
             </div>
-            <div className="absolute top-1/2 -translate-y-1/2 right-8">
-              <div className="border-l-[3px] border-[#4EA5A7] pl-3 [text-shadow:0_1px_3px_rgba(0,0,0,0.9),0_2px_14px_rgba(0,0,0,0.75)]">
-                <p className="text-sm lg:text-lg font-bold text-white whitespace-nowrap">Dra. Claudia Zapata Mapura</p>
-                <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Fundadora Mapura Grupo Consultor</p>
-                <p className="text-xs lg:text-sm text-white/90 whitespace-nowrap">Referente nacional en Ley de Insolvencia</p>
+            <div className="absolute bottom-6 left-4">
+              {/* Dark vignette behind the label so it stays legible over any part of the photo */}
+              <div
+                className="absolute -inset-4 -z-10 rounded-2xl"
+                style={{
+                  background: "radial-gradient(circle at bottom left, rgba(0,0,0,0.55) 0%, transparent 75%)",
+                }}
+              />
+              <div className="border-l-4 border-[#4EA5A7] pl-3 [text-shadow:0_1px_4px_rgba(0,0,0,0.95),0_2px_16px_rgba(0,0,0,0.8)]">
+                <p className="text-base font-black text-white whitespace-nowrap tracking-tight">
+                  Dra. Claudia Zapata Mapura
+                </p>
+                <p className="text-xs font-semibold text-white whitespace-nowrap">Fundadora Mapura Grupo Consultor</p>
+                <p className="text-xs font-semibold text-white whitespace-nowrap">
+                  Referente nacional en Ley de Insolvencia
+                </p>
               </div>
             </div>
           </div>

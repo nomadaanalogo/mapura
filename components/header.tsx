@@ -4,7 +4,7 @@ import { FaPhone, FaInstagram, FaBars, FaTimes, FaHome, FaBriefcase, FaGraduatio
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const NAV_ITEMS = [
   { href: "/", label: "Inicio", icon: FaHome },
@@ -16,6 +16,23 @@ const NAV_ITEMS = [
 export default function Header() {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight
+      const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0
+      setScrollProgress(Math.min(100, Math.max(0, pct)))
+    }
+
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onScroll)
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
+    }
+  }, [])
 
   return (
     <>
@@ -136,9 +153,28 @@ export default function Header() {
             </nav>
           )}
         </div>
+
+        {/* Barra de progreso de lectura, pegada al borde inferior del navbar */}
+        <div
+          className="h-1 bg-blue-50"
+          role="progressbar"
+          aria-label="Progreso de lectura de la página"
+          aria-valuenow={Math.round(scrollProgress)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        >
+          <div
+            className="h-full transition-[width] duration-150 ease-out"
+            style={{
+              width: `${scrollProgress}%`,
+              background: "linear-gradient(90deg, #1F7A7C 0%, #4EA5A7 50%, #22C55E 100%)",
+              boxShadow: "0 0 8px rgba(34, 197, 94, 0.6)",
+            }}
+          />
+        </div>
       </header>
-      {/* Spacer so fixed-position header doesn't cover page content */}
-      <div className="h-[60px] lg:h-[64px]" />
+      {/* Spacer so fixed-position header (incl. progress bar) doesn't cover page content */}
+      <div className="h-[61px] lg:h-[65px]" />
     </>
   )
 }
