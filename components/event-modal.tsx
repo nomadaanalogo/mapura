@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { FaTimes } from "react-icons/fa"
+import { trackLead } from "@/lib/fbq"
 
 const FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSeNXQ09WG8eVyOPuJ7HDN4sdvb21YreiDCaLVq7K70-t5syEQ/viewform?fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJmZGlkFlEZGwCJ-JI-If14YGu1AfpL3-NuduxzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaf5IrpkD89KJHKuxATga78-MeufG1A4CLDxPpyN2HEbJasebP_Y-tVOsjk4kw_aem_4EY6NopWa8bOsDDVsOZ1UA"
@@ -75,7 +76,10 @@ export default function EventModal() {
           href={FORM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            trackLead()
+            setOpen(false)
+          }}
           className="block"
         >
           <Image

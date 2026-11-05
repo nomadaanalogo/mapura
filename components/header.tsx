@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
+import { trackLead } from "@/lib/fbq"
 
 const NAV_ITEMS = [
   { href: "/", label: "Inicio", icon: FaHome },
@@ -184,6 +185,7 @@ export default function Header() {
         href={FORM_URL}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackLead()}
         className="group block bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700 hover:from-blue-800 hover:via-blue-700 hover:to-blue-800 transition-colors"
       >
         <div className="container mx-auto px-4 py-2.5 flex items-center justify-center gap-2 sm:gap-3 text-center">
