@@ -92,7 +92,9 @@ function resumenInsolvenciaHtml(data) {
   `
 }
 
-const WHATSAPP_URL = "https://wa.me/573106537502"
+// Número exclusivo para Insolvencia (home); el otro número es para Otros Servicios.
+const WHATSAPP_URL_INSOLVENCIA = "https://wa.me/573207927154"
+const WHATSAPP_URL_SERVICIOS = "https://wa.me/573106537502"
 const LOGO_URL = "https://grupomapura.co/images/mapura-logo-email.png"
 const FOTO_DRA_URL = "https://grupomapura.co/images/dr-mapura-office-email.jpg"
 
@@ -163,6 +165,8 @@ function botonEmail(url, texto, fondo) {
 function enviarEmailCliente(data) {
   const asunto = "Hemos recibido tu solicitud - Mapura"
   const nombre = esc((data.nombre || "").trim().split(" ")[0])
+  const whatsappUrl = esInsolvencia(data) ? WHATSAPP_URL_INSOLVENCIA : WHATSAPP_URL_SERVICIOS
+  const whatsappTexto = esInsolvencia(data) ? "+57 320 792 7154" : "+57 310 653 7502"
 
   // Logo y foto se incrustan como imágenes (cid:) para que se vean siempre, aunque el
   // cliente de correo bloquee imágenes externas. Si la descarga falla, se usa la URL
@@ -301,9 +305,9 @@ function enviarEmailCliente(data) {
                     <p style="margin: 0 0 20px 0; font-size: 17px; line-height: 1.6; color: #4A5A6A;">
                       Escríbenos ahora mismo por WhatsApp y empezamos a revisar tu caso.
                     </p>
-                    ${botonEmail(WHATSAPP_URL, "Hablar por WhatsApp&nbsp;&nbsp;&rsaquo;", "#22C55E")}
+                    ${botonEmail(whatsappUrl, "Hablar por WhatsApp&nbsp;&nbsp;&rsaquo;", "#22C55E")}
                     <p style="margin: 14px 0 0 0; text-align: center; font-size: 15px; color: #6B7A88;">
-                      +57 310 653 7502 &nbsp;&middot;&nbsp; Info@grupomapura.co
+                      ${whatsappTexto} &nbsp;&middot;&nbsp; Info@grupomapura.co
                     </p>
                   </td>
                 </tr>

@@ -169,7 +169,7 @@ function cityJsonLd(data: CityLanding, url: string) {
       name: `Mapura Grupo Consultor - Abogados de Insolvencia Económica en ${data.city}`,
       image: "https://grupomapura.co/images/mapura-logo-new.webp",
       url,
-      telephone: "+573106537502",
+      telephone: "+573207927154",
       priceRange: "Consulta gratuita",
       address: {
         "@type": "PostalAddress",

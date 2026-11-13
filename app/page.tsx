@@ -73,7 +73,7 @@ export default function Home() {
     description:
       "Firma de consultoría legal centrada en el cliente. Abogados en Ley de Insolvencia Económica en Palmira, Valle del Cauca, con servicio en toda Colombia.",
     url: "https://grupomapura.co",
-    telephone: "+573106537502",
+    telephone: "+573207927154",
     priceRange: "Consulta gratuita",
     address: {
       "@type": "PostalAddress",

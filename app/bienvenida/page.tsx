@@ -34,7 +34,7 @@ export default function BienvenidaPage() {
         </div>
 
         <a
-          href="https://wa.me/573106537502"
+          href="https://wa.me/573207927154"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-10 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-3.5 px-8 font-bold rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-400"

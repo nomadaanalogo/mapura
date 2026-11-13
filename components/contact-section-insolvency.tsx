@@ -157,7 +157,7 @@ export default function ContactSectionInsolvency() {
         }`,
       ].join("\n")
 
-      const whatsappURL = `https://wa.me/573106537502?text=${encodeURIComponent(resumen)}`
+      const whatsappURL = `https://wa.me/573207927154?text=${encodeURIComponent(resumen)}`
       window.open(whatsappURL, "_blank")
 
       setSubmitted(true)
@@ -457,19 +457,19 @@ export default function ContactSectionInsolvency() {
 
         <div className="mt-16 text-center">
           <div className="flex flex-wrap justify-center items-center gap-8 text-white">
-            <a href="tel:+573106537502" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+            <a href="tel:+573207927154" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
               <FaPhone className="text-2xl" />
               <div>
                 <p className="font-semibold">Llámanos</p>
-                <p className="text-white/80">+57 3106537502</p>
+                <p className="text-white/80">+57 3207927154</p>
               </div>
             </a>
 
-            <a href="https://wa.me/573106537502" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+            <a href="https://wa.me/573207927154" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
               <FaWhatsapp className="text-2xl" />
               <div>
                 <p className="font-semibold">WhatsApp</p>
-                <p className="text-white/80">+57 3106537502</p>
+                <p className="text-white/80">+57 3207927154</p>
               </div>
             </a>
 
