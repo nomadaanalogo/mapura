@@ -12,7 +12,7 @@ import FinalCtaInsolvencySection from "@/components/final-cta-insolvency-section
 import ContactSectionInsolvency from "@/components/contact-section-insolvency"
 import SocialGrowthSection from "@/components/social-growth-section"
 import Footer from "@/components/footer"
-import EventModal from "@/components/event-modal"
+import EventBadge from "@/components/event-badge"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -146,7 +146,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      <EventModal />
+      <EventBadge />
       <Header />
       <InsolvencyHeroSection />
       <InsolvencyIntroSection />

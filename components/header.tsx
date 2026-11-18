@@ -191,7 +191,8 @@ export default function Header() {
         <div className="container mx-auto px-4 py-2.5 flex items-center justify-center gap-2 sm:gap-3 text-center">
           <FaBullhorn className="text-yellow-300 text-sm sm:text-base flex-shrink-0 animate-pulse" />
           <span className="text-white font-bold text-xs sm:text-sm">
-            <span className="text-yellow-300">Antes de usar tu prima</span> — inscríbete a nuestra conferencia gratuita
+            <span className="text-yellow-300">¿Tus deudas se salieron de control?</span> Te ayudamos — inscríbete a
+            nuestra conferencia gratuita aquí
           </span>
           <FaArrowRight className="text-white text-xs sm:text-sm flex-shrink-0 transition-transform group-hover:translate-x-1" />
         </div>
