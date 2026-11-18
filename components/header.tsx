@@ -186,15 +186,17 @@ export default function Header() {
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackLead()}
-        className="group block bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700 hover:from-blue-800 hover:via-blue-700 hover:to-blue-800 transition-colors"
+        className="group block bg-gradient-to-r from-[#2C3E50] to-[#4EA5A7] hover:from-[#263544] hover:to-[#439597] transition-colors"
       >
-        <div className="container mx-auto px-4 py-2.5 flex items-center justify-center gap-2 sm:gap-3 text-center">
-          <FaBullhorn className="text-yellow-300 text-sm sm:text-base flex-shrink-0 animate-pulse" />
-          <span className="text-white font-bold text-xs sm:text-sm">
-            <span className="text-yellow-300">¿Tus deudas se salieron de control?</span> Te ayudamos — inscríbete a
-            nuestra conferencia gratuita aquí
+        <div className="container mx-auto px-4 py-2.5 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-center">
+          <span className="flex items-center gap-2 text-white font-bold text-xs sm:text-sm leading-snug">
+            <FaBullhorn className="text-[#7fe3a0] text-sm sm:text-base flex-shrink-0 animate-pulse" />
+            <span className="text-[#7fe3a0]">¿Tus deudas se salieron de control?</span>
           </span>
-          <FaArrowRight className="text-white text-xs sm:text-sm flex-shrink-0 transition-transform group-hover:translate-x-1" />
+          <span className="flex items-center gap-2 text-white font-bold text-xs sm:text-sm leading-snug">
+            Te ayudamos — inscríbete a nuestra conferencia gratuita aquí
+            <FaArrowRight className="text-white text-xs sm:text-sm flex-shrink-0 transition-transform group-hover:translate-x-1" />
+          </span>
         </div>
       </a>
     </>

@@ -33,8 +33,8 @@ export default function EventBadge() {
           className="h-7 w-auto object-contain mb-3"
         />
 
-        <p className="text-base font-black text-[#2C3E50] leading-snug mb-2">
-          ¡Regístrate aquí! Conferencia gratuita sobre la Ley de Insolvencia
+        <p className="text-base font-black text-[#4EA5A7] leading-snug mb-2">
+          ¡Regístrate gratis! Conferencia sobre la Ley de Insolvencia
         </p>
 
         <div className="space-y-1 mb-3">
@@ -44,7 +44,7 @@ export default function EventBadge() {
           </div>
           <div className="flex items-center gap-2 text-xs text-[#2C3E50]/70 font-semibold">
             <FaMapMarkerAlt className="text-[#4EA5A7]" />
-            Teatro Materon, Cra. 29 No. 30-40
+            Teatro Materon, Palmira — Cra. 29 No. 30-40
           </div>
         </div>
 
