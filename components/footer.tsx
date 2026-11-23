@@ -1,5 +1,8 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { FaMapMarkerAlt, FaPhone, FaInstagram } from "react-icons/fa"
 import { CITY_LANDINGS } from "@/lib/city-landings"
 
@@ -13,6 +16,10 @@ const GOOGLE_MAPS_URL =
   "https://www.google.com/maps/place/Mapura+Grupo+Consultor+%7C+Abogados/@3.5506895,-76.2924628,1086m/data=!3m2!1e3!4b1!4m6!3m5!1s0x8e3a050051720b25:0x596f567203f7b177!8m2!3d3.5506895!4d-76.2898879!16s%2Fg%2F11xt0yny0s!5m1!1e1"
 
 export default function Footer() {
+  const pathname = usePathname()
+  const isInsolvenciaPage = pathname === "/" || pathname.startsWith("/insolvencia-economica")
+  const phoneDisplay = isInsolvenciaPage ? "320 792 7154" : "310 653 7502"
+
   return (
     <footer className="bg-[#2C3E50] text-white py-12 lg:py-16">
       <div className="container mx-auto px-4 lg:px-16">
@@ -80,7 +87,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <FaPhone className="flex-shrink-0 text-[#4EA5A7]" />
-                <span>+57 310 653 7502</span>
+                <span>+57 {phoneDisplay}</span>
               </li>
               <li className="flex items-center gap-2">
                 <FaInstagram className="flex-shrink-0 text-[#4EA5A7]" />

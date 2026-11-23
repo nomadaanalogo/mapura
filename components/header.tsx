@@ -6,6 +6,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { trackLead } from "@/lib/fbq"
+import WhatsAppFloatButton from "@/components/whatsapp-float-button"
 
 const NAV_ITEMS = [
   { href: "/", label: "Inicio", icon: FaHome },
@@ -19,6 +20,9 @@ const FORM_URL =
 
 export default function Header() {
   const pathname = usePathname()
+  const isInsolvenciaPage = pathname === "/" || pathname.startsWith("/insolvencia-economica")
+  const phoneDigits = isInsolvenciaPage ? "573207927154" : "573106537502"
+  const phoneDisplay = isInsolvenciaPage ? "320 792 7154" : "310 653 7502"
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
 
@@ -89,12 +93,12 @@ export default function Header() {
               {/* Desktop contact info */}
               <div className="hidden lg:flex items-center space-x-6 text-[#2C3E50]">
                 <a
-                  href="tel:+573106537502"
+                  href={`tel:+${phoneDigits}`}
                   className="flex items-center space-x-2 hover:text-[#4EA5A7] transition-colors"
                   aria-label="Llamar a Mapura"
                 >
                   <FaPhone className="text-sm" />
-                  <span className="text-sm">+57 3106537502</span>
+                  <span className="text-sm">+57 {phoneDisplay}</span>
                 </a>
                 <a
                   href="https://www.instagram.com/mapuragrupoconsultor"
@@ -110,12 +114,12 @@ export default function Header() {
 
               {/* Mobile phone link */}
               <a
-                href="tel:+573106537502"
+                href={`tel:+${phoneDigits}`}
                 className="lg:hidden flex items-center gap-1.5 text-[#2C3E50]"
                 aria-label="Llamar a Mapura"
               >
                 <FaPhone className="text-sm" />
-                <span className="text-xs font-semibold whitespace-nowrap">310 653 7502</span>
+                <span className="text-xs font-semibold whitespace-nowrap">{phoneDisplay}</span>
               </a>
 
               {/* Button visible on all screen sizes */}
@@ -199,6 +203,8 @@ export default function Header() {
           </span>
         </div>
       </a>
+
+      <WhatsAppFloatButton />
     </>
   )
 }
