@@ -1,11 +1,10 @@
 "use client"
 
-import { FaPhone, FaInstagram, FaBars, FaTimes, FaHome, FaBriefcase, FaGraduationCap, FaCommentDots, FaBullhorn, FaArrowRight } from "react-icons/fa"
+import { FaPhone, FaInstagram, FaBars, FaTimes, FaHome, FaBriefcase, FaGraduationCap, FaCommentDots } from "react-icons/fa"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import { trackLead } from "@/lib/fbq"
 import WhatsAppFloatButton from "@/components/whatsapp-float-button"
 
 const NAV_ITEMS = [
@@ -14,9 +13,6 @@ const NAV_ITEMS = [
   { href: "/academia", label: "Academia", icon: FaGraduationCap },
   { href: "#contact-form", label: "Contacto", icon: FaCommentDots },
 ]
-
-const FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeNXQ09WG8eVyOPuJ7HDN4sdvb21YreiDCaLVq7K70-t5syEQ/viewform?fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJmZGlkFlEZGwCJ-JI-If14YGu1AfpL3-NuduxzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaf5IrpkD89KJHKuxATga78-MeufG1A4CLDxPpyN2HEbJasebP_Y-tVOsjk4kw_aem_4EY6NopWa8bOsDDVsOZ1UA"
 
 export default function Header() {
   const pathname = usePathname()
@@ -183,26 +179,6 @@ export default function Header() {
       </header>
       {/* Spacer so fixed-position header (incl. progress bar) doesn't cover page content */}
       <div className="h-[61px] lg:h-[65px]" />
-
-      {/* Aviso de la conferencia gratuita */}
-      <a
-        href={FORM_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => trackLead()}
-        className="group block bg-gradient-to-r from-[#2C3E50] to-[#4EA5A7] hover:from-[#263544] hover:to-[#439597] transition-colors"
-      >
-        <div className="container mx-auto px-4 py-2.5 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-center">
-          <span className="flex items-center gap-2 text-white font-bold text-xs sm:text-sm leading-snug">
-            <FaBullhorn className="text-[#7fe3a0] text-sm sm:text-base flex-shrink-0 animate-pulse" />
-            <span className="text-[#7fe3a0]">¿Tus deudas se salieron de control?</span>
-          </span>
-          <span className="flex items-center gap-2 text-white font-bold text-xs sm:text-sm leading-snug">
-            Te ayudamos — inscríbete a nuestra conferencia gratuita aquí
-            <FaArrowRight className="text-white text-xs sm:text-sm flex-shrink-0 transition-transform group-hover:translate-x-1" />
-          </span>
-        </div>
-      </a>
 
       <WhatsAppFloatButton />
     </>
